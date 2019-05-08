@@ -1,0 +1,142 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+body{
+    background: #f7f7f7;
+}
+.outLine{
+    position: relative;
+    width: 1180px;
+    height: 100px;
+    margin: 100px auto;
+    border: 1px solid #e6e6e6;
+    background: white;
+}
+.outLine .logo{
+    position: absolute;
+    width: 185px;
+    height: 55px;
+    right: 0;
+    top: -50px;
+    cursor: pointer;
+
+}
+.outLine .logo img{
+    width: 100%;
+}
+
+.mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    left: 0;
+    top:0;
+    display: none;
+}
+.mask .container{
+    position: absolute;   
+    left: 50%;
+    top: 100px; 
+    width: 360px;
+    background: white;
+    border-radius: 5px;
+    border:1px solid gray;
+    transform: translateX(-50%);
+}
+.mask .container .head{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    height: 44px;
+    border-bottom: 1px solid #eeeeee;
+}
+.mask .container .head p{
+    float: left;
+}
+.mask .container .head a{
+     display: block;
+     float: right;  
+     color: #cccccc; 
+}
+.mask .container .head a:hover{
+    color: blue;
+}
+.mask .container .cont-body{
+    width: 100%;
+    margin: 0 auto;
+}
+.mask .container .cont-body .inner{
+    width:300px ;
+    background: #dbf0fa;
+    margin: 15px auto 30px;
+    font-size: 12px;
+    box-shadow: 1px 1px 2px #ddd;
+}
+.mask .container .cont-body .inner h2{
+    background: url(../img/ico.png) 0 -120px no-repeat;
+    /* background-position: 0  */
+    width: 186px;
+    height: 183px;
+    margin: 0 auto;
+}
+.mask .container .cont-body .inner button{
+    display: block;
+    background: url(../img/ico.png) 0 0 no-repeat;
+    width: 271px;
+    height: 40px;
+    margin: 0 auto;
+    border: 0;
+    cursor: pointer;
+    margin-top: -45px;
+
+}
+.mask .container .cont-body .inner button:hover{
+    background-position: 0 -40px;
+}
+.mask .container .cont-body .contents{
+    position: relative;
+    margin: 15px auto 10px;
+    color: #777;
+    text-align: center;
+}
+.mask .container .cont-body .contents::after{
+    position: absolute;
+    content: '';
+    display: block;
+    background: #ccc;
+    width: 40px;
+    height: 7px;
+    left: 16px;
+    top: 5px;
+}
+.mask .container .cont-body .contents::before{
+    position: absolute;
+    content: '';
+    display: block;
+    background: #ccc;
+    width: 40px;
+    height: 7px;
+    right: 16px;
+    top: 5px;
+}
+.mask .container .cont-body .inner ul{
+    height: 180px;
+    margin: 0 10px;
+    padding: 5px 5px 0 5px;
+    overflow: hidden;
+
+}
+.mask .container .cont-body .inner ul li{
+    padding-left: 5px;
+}
+li.takeout{
+    background: url(../img/ico.png) 0 -320px no-repeat;
+    color: #fe5a23;
+    font-weight: 600;
+    height: 19px;
+    line-height: 19px;
+}

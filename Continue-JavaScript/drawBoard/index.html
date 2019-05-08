@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>drawing Board</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="container">
+        <canvas id="cavs" width="700" height="330"></canvas>
+        <ul>
+            <li><input type="color"  id="colorChange"></li>
+            <li><input type="button"  value = '清屏' id="cleanBoard"></li>
+            <li><input type="button" value = '橡皮' id="eraser"></li>
+            <li><input type="button" value = '撤销' id="rescind"></li>
+            <li><input type="range"  value="线条粗细" id="lineRuler" min="1" max="20"></li>
+        </ul>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            text-decoration: none;
+        }
+        #btn{
+            width:80px;
+            height:40px;
+            background:#3b7ae3;
+            margin:0 auto;
+            display:block;
+            cursor:pointer;
+            border-style:none;
+            color:#fff;
+            font-size:16px;
+        }
+        #mask{
+            background:#000;
+            opacity:0.75;
+            filter:alpha(opacity=75);
+            height:1000px;
+            width:100%;
+            position:absolute;
+            left:0;
+            top:0;
+            z-index:1000;
+        }
+        #login{
+            position:absolute;
+            top:100px;
+            left:100px;
+            width:400px;
+            height:auto;
+            border:1px solid #d5d5d5;
+            z-index:1001;
+        }
+        .title{
+            position:relative;
+            background: #f7f7f7;
+            cursor:move;
+            height:50px;
+            line-height: 50px;
+            font-size:16px;
+            color:#333;
+            padding-left:30px;
+        }
+        .close{
+            position:absolute;
+            top:0;
+            right:10px;
+            color:#ccc;
+        }
+        .content{
+            background:#fff;
+            padding:15px 20px;
+        }
+        .user{
+            margin-bottom:15px;
+        }
+        .password{
+            margin-bottom:15px;
+        }
+        .pt{
+            display:block;
+            height:38px;
+            padding-left:15px;
+            border:1px solid #ddd;
+            transition:.3s;
+            font-size:14px;
+            color:#666;
+            width:343px;
+        }
+        .sm{
+            display:block;
+            height:48px;
+            border:1px solid #ddd;
+            transition:.3s;
+            font-size:16px;
+            color:#666;
+            width:360px;
+            background:#3b7ae3;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">登陆</button>
+    <!-- <div id="mask"></div>
+    <div class="login" id="login">
+        <div class="title" id="title">登陆百度账号      <a href="#" class="close">X</a>
+        </div>
+        <div class="content">
+            <div class="user">
+                <input type="text" class="pt" placeholder="手机/邮箱/用户名" value="" name="">
+            </div>
+            <div class="password">
+                <input type="password" class="pt" placeholder="请输入密码" value="" name="">
+            </div>
+            <div class="submit">
+                <input type="button" class="sm" value="登陆">
+            </div>
+        </div>
+    </div> -->
+    <script>
+        function b(){
+             //创建遮罩层div并插入body
+            var mask = document.createElement("div");
+            mask.id = "mask";
+            //窗口可视区域高度
+            var cheight = document.documentElement.clientHeight || document.body.clientHeight;
+            mask.style.height = cheight + "px";
+            //宽度直接用100%在样式里
+            document.body.appendChild(mask);
+            //创建登录层div并插入body
+            var login = document.createElement("div");
+            login.id="login";
+            login.innerHTML = '<div class="title" id="title">登陆百度账号'+'<a href="#" class="close">X</a>'+'</div>'+'<div class="content">'+'<div class="user">'+'<input type="text" class="pt" placeholder="手机/邮箱/用户名" value="" name="">'+'</div>'+'<div class="password">'+'<input type="password" class="pt" placeholder="请输入密码" value="" name="">'+'</div>'+'<div class="submit">'+'<input type="button" class="sm" value="登陆">'+'</div>'+'</div>';
+            document.body.appendChild(login);
+             //窗口可视区域宽度
+            var cwidth = document.documentElement.clientWidth || document.body.clientWidth;
+             //登录框宽度
+            var lwidth = login.offsetWidth;
+             //登录框高度
+            var lheight = login.offsetHeight;
+             //设置登录框的居中显示
+            login.style.left = (cwidth-lwidth)/2+"px";
+            login.style.top = (cheight-lheight)/2+"px";
+             //设置遮罩层的高度
+            mask.style.height = cheight + "px";
+             //改变窗口大小后依然居中显示
+            window.onresize = function(){
+                if(document.compatMode == "CSS1Compat"){
+                    cwidth = document.documentElement.clientWidth;
+                    cheight = document.documentElement.clientHeight;
+                }else{
+                    cwidth = document.body.clientWidth;
+                    cheight = document.body.clientHeight;
+                }
+                login.style.left = (cwidth - lwidth)/2+"px";
+                login.style.top = (cheight - lheight)/2+"px";
+                mask.style.height = cheight +"px";
+            }
+             //获取拖拽容器
+            var title  =document.getElementById("title");
+            var isDraging = false;
+            var mouseOffsetX;
+            var mouseOffsetY;
+             //鼠标按下事件
+            title.onmousedown = function(e){
+                var e = e||window.event;
+                //鼠标相对于登录框的位置
+                mouseOffsetX = e.pageX-login.offsetLeft;
+                mouseOffsetY = e.pageY-login.offsetTop;
+                 //鼠标摁下时为true
+                isDraging = true;
+            }
+             //鼠标移动事件
+            document.onmousemove = function(e){
+                var e = e||window.event;
+                 //鼠标移动时的坐标
+                var newMX = e.pageX;
+                var newMY = e.pageY;
+                //判断为true时可以拖拽
+                if(isDraging===true){
+                    //登录框的偏移值=当前位置-鼠标到登录框的距离
+                    var loginL = newMX-mouseOffsetX;
+                    var loginT = newMY-mouseOffsetY;
+                    //如果left top值超过边缘时就让他等于边缘
+                    if(loginL<0){
+                        loginL = 0;
+                    }else if(loginL>(cwidth-lwidth)){
+                        loginL = cwidth - lwidth;
+                    }
+                    if(loginT<0){
+                        loginT = 0;
+                    }else if(loginT>(cheight-lheight)){
+                        loginT = cheight-lheight;
+                    }
+                    login.style.left = loginL+"px";
+                    login.style.top = loginT+"px";
+                }
+            }
+             //鼠标弹起时设置为不可拖拽
+            document.onmouseup = function(){
+                isDraging = false;
+            }
+             //点击X关闭登录框和弹出层
+            var close = login.getElementsByClassName("close")[0];
+            close.onclick = function(){
+                document.body.removeChild(mask);
+                document.body.removeChild(login);
+            }
+        }
+        //点击登录弹出登录框和弹出层
+        window.onload = function(){
+            var btn = document.getElementById("btn");
+            btn.onclick = function(){
+                b();
+            }
+        }
+    </script>
+</body>
+</html>

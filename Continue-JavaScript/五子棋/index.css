@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#chess{
+    width: 762px;
+    height: 762px;
+    border: 1px solid #000;
+    background-image: url('./img/timg.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 50px auto;
+    position: relative;
+}
+
+
+.grid{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-origin: content-box;
+    background-size: 100% 100%;
+    padding: 5px;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #banner {
+            width: 500px;
+            height: 300px;
+            /* border: 1px solid #000; */
+            
+            /* 不占像素位置 */
+            /* outline: 1px solid #000; */
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+
+    </div>
+    <script src="./index.js"></script>
+    <script>
+        var bannerDiv = document.getElementById('banner');
+        createBannerArea(bannerDiv, [{
+                imgUrl: "./img/1.jpg",
+                link: "http://www.duyiedu.com"
+            },
+            {
+                imgUrl: "./img/2.jpg",
+                link: "http://www.duyiedu.com"
+            },
+            {
+                imgUrl: "./img/3.jpg",
+                link: "http://www.duyiedu.com"
+            }
+        ])
+    </script>
+</body>
+
+</html>

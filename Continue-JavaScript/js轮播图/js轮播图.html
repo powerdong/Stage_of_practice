@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js轮播图</title>
+
+    <style>
+        div,
+        ul,
+        li,
+        a,
+        img {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            margin: 0 auto;
+            width: 520px;
+            height: 280px;
+            position: relative;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        
+        .container .list {
+            width: 3640px;
+            height: 280px;
+            /* border: 1px solid #000; */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .list img {
+            float: left;
+        }
+        
+        .container ul {
+            float: left;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -50px;
+            z-index: 2;
+            width: 100px;
+            height: 20px;
+            /* background-color: #f50; */
+        }
+        
+        .container ul li {
+            list-style: none;
+            float: left;
+            width: 8px;
+            height: 20px;
+            margin-left: 10px;
+            background-color: #ccc;
+        }
+        
+        .container ul li.on {
+            background-color: #f60;
+        }
+        
+        .container a {
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, .3);
+            position: absolute;
+            z-index: 2;
+            font-size: 40px;
+            line-height: 40px;
+            text-align: center;
+            top: 50%;
+            margin-top: -20px;
+            color: #fff;
+            display: none;
+        }
+        
+        .container a.next {
+            right: 10px;
+        }
+        
+        .container a.prev {
+            left: 10px;
+        }
+        
+        .container:hover {
+            box-shadow: 10px 10px 10px #ccc;
+            top: -2px;
+            left: -2px;
+        }
+        
+        .container:hover a {
+            display: block;
+        }
+        
+        .container a:hover {
+            background-color: rgba(0, 0, 0, .7);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="list" style="left:-520px;">
+            <img src="./images/img5.png" alt="">
+            <img src="./images/img1.png" alt="">
+            <img src="./images/img2.png" alt="">
+            <img src="./images/img3.png" alt="">
+            <img src="./images/img4.png" alt="">
+            <img src="./images/img5.png" alt="">
+            <img src="./images/img1.png" alt="">
+        </div>
+        <ul>
+            <li index="1" class="on"></li>
+            <li index="2" class=""></li>
+            <li index="3" class=""></li>
+            <li index="4" class=""></li>
+            <li index="5" class=""></li>
+        </ul>
+        <a href="javascript:;" class="next">&gt;</a>
+        <a href="javascript:;" class="prev">&lt;</a>
+
+    </div>
+    <script>
+        // 提取元素
+        var container = document.getElementsByClassName('container')[0];
+        var list = document.getElementsByClassName('list')[0];
+        var next = document.getElementsByClassName('next')[0];
+        var prev = document.getElementsByClassName('prev')[0];
+        var btn = document.getElementsByTagName('li');
+        var index = 1;
+        var timer, timer1, animated = true;
+
+
+        // 变换规则 animate
+        function animate(offset) {
+            animated = false; //设置动画锁
+            var newLeft = parseInt(list.style.left) + offset;
+            var time = 300; //两张图片切换时间
+            var interval = 10; //间隔时间
+            var speed = offset / (time / interval); //每次位移量
+            function go() {
+                // 动画函数
+                if (speed < 0 && parseInt(list.style.left) > newLeft || speed > 0 && parseInt(list.style.left) < newLeft) {
+                    list.style.left = parseInt(list.style.left) + speed + 'px';
+                    setTimeout(go, interval);
+                } else {
+                    list.style.left = newLeft + 'px';
+                    if (newLeft < -2600) {
+                        // 找到最后一张图位置返回第一张
+                        list.style.left = -520 + "px";
+
+                    } else if (newLeft > -520) {
+                        // 找到第一张图位置返回最后一张
+                        list.style.left = -2600 + "px";
+                    }
+                    animated = true;
+
+                }
+            }
+            go();
+        }
+
+
+        // 设置点击事件
+        next.onclick = function() {
+            if (!animated) {
+                return;
+            }
+            animate(-520);
+            if (index == 5) {
+                index = 1;
+            } else {
+                index++;
+            }
+            showPoint();
+        }
+        prev.onclick = function() {
+            if (animated == false) {
+                return;
+            }
+            animate(520);
+            if (index == 1) {
+                index = 5;
+            } else {
+                index--;
+            }
+            showPoint();
+
+
+        }
+
+        // 小圆点显示颜色
+        function showPoint() {
+            for (var i = 0; i < btn.length; i++) {
+                if (btn[i].className == 'on') {
+                    btn[i].className = '';
+                    break;
+                }
+            }
+            btn[index - 1].className = 'on';
+        }
+
+        // 按钮点击跳转
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].onclick = function() {
+                if (this.className == 'on') {
+                    return;
+                }
+                var myIndex = parseInt(this.getAttribute('index'));
+                var offset = -520 * (myIndex - index);
+                index = myIndex;
+                showPoint();
+                if (animated == false) {
+                    animate(offset);
+                }
+            }
+        }
+
+        // 设置定时器
+
+        function autoPlay() {
+            timer = setInterval(function() {
+                next.onclick();
+            }, 3000)
+        }
+        // 设置鼠标移入事件,移入定时器关闭
+        container.addEventListener('mouseover', function() {
+            clearInterval(timer);
+        }, false);
+        // 设置鼠标移出事件,移出定时器正常执行
+        container.addEventListener('mouseout', function() {
+            autoPlay();
+        }, false);
+        window.onload = autoPlay();
+    </script>
+</body>
+
+</html>

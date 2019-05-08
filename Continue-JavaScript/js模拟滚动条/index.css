@@ -1,0 +1,68 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+body{
+    overflow: hidden;
+}
+.container{
+    width: 380px;
+    height: 400px;
+    margin: 100px auto;
+    border: 1px solid #f00;
+    position: relative;
+    overflow: hidden;
+}
+
+.container .content{
+    width: 350px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.container .scroll{
+    width: 28px;
+    height: 398px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 1px solid #000;
+}
+
+.container .scroll li{
+    width: 100%;
+}
+
+.container .scroll li.up{
+    height: 28px;
+    cursor: pointer;
+}
+.container .scroll li.down{
+    height: 28px;
+    cursor: pointer;
+}
+.container .scroll li img{
+    width: 27px;
+    height: 100%;
+    
+}
+
+.container .scroll li.duration{
+    position: relative;
+    height: 342px;
+    width: 100%;
+}
+
+.container .scroll li.duration .bar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: #000;
+    /* height: 20px; */
+    cursor: -webkit-grabbing;
+}
+
+

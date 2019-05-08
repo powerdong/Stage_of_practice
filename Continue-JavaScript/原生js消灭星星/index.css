@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+#pop_star{
+    position: relative;
+    width: 500px;
+    height: 100%;
+    margin: 0 auto;
+    background-image: url('./pic/background.png');
+    background-size: cover;
+    font-size: 0;
+}
+
+#targetScore{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    color: #fff;
+}
+
+#nowScore {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    color: #fff;
+}
+
+#selectScore{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    color: #fff;
+    /* 全透明   做淡入淡出效果*/
+    opacity: 0;
+}
+

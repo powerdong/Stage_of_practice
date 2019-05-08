@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body{
+    background: url(../img/xhr.jpg) 0 0 no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.container{
+    margin: 30px;
+}
+#cavs{
+    border: 1px solid red;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 10px 10px 5px #888888;
+}
+.container ul{
+    width: 700px;
+    text-align: center;   
+
+}
+.container ul li{
+   display: inline-block;
+   margin-left: 35px;
+}
+
+.container ul li input{
+    background: yellow;
+    color:black ;
+    border:none;
+    padding: 6px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition-duration: 0.2s;
+}
+.container ul li input:hover{
+    border:1px solid rebeccapurple;
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24);
+}

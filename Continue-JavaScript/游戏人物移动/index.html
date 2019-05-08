@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RPG running</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .butsArea {
+            /* 网格布局 */
+            display: grid;
+            /*多少列  每列的宽度*/
+            grid-template-columns: 40px 40px 40px;
+            /* 多少行 每行g高度 */
+            grid-template-rows: 30px 30px 30px;
+            /* 网格间隔 */
+            grid-gap: 10px;
+            /* 靠右 */
+            justify-content: right;
+            margin-top: 50px;
+        }
+
+        .butsArea ul li {
+            width: 40px;
+            height: 30px;
+
+        }
+
+        .butsArea li input {
+            width: 100%;
+            height: 100%;
+            background-color: orange;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        img {
+            position: absolute;
+            left: 500px;
+            top: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="rpg" src="./images/down-0.png" alt="">
+    <ul class="butsArea">
+        <li><input id="lu" type="button" value="左上"></li>
+        <li><input id="up" type="button" value="向上"></li>
+        <li><input id="rightUp" type="button" value="右上"></li>
+        <li><input id="left" type="button" value="向左"></li>
+        <li><input id="stop" type="button" value="停止"></li>
+        <li><input id="right" type="button" value="向右"></li>
+        <li><input id="ld" type="button" value="左下"></li>
+        <li><input id="down" type="button" value="向下"></li>
+        <li><input id="rd" type="button" value="右下"></li>
+    </ul>
+    <script>
+        // 1.自身动画问题
+        var rpgNode = document.getElementById('rpg');
+        var i = 0;
+        var butsArea = document.getElementsByClassName('butsArea')[0];
+        var speed = 10;
+        var animate = null;
+        var imgStop = 'down';
+        // 2.点击上下左右，判断方向
+        butsArea.addEventListener('click', function (e) {
+            // console.log(e.target.id);
+            var flage = e.target.id;
+            
+            if (flage == 'stop') {
+                clearInterval(animate);
+                rpgNode.src = "./images/" + imgStop + "-" + 0 + ".png";
+                return;
+            }
+            if (flage.length > 0) {
+                clearInterval(animate);
+                imgStop = flage;
+                animate = setInterval(function () {
+                    i++;
+                    if (i > 4) {
+                        i = 1;
+                    }
+                    rpgNode.src = "./images/" + flage + "-" + i + ".png";
+                    switch (flage) {
+                        case 'down':
+                            rpgNode.style.top = rpgNode.offsetTop + speed + 'px';
+                            break;
+                        case 'up':
+                            rpgNode.style.top = rpgNode.offsetTop - speed + 'px';
+                            break;
+                        case 'left':
+                            rpgNode.style.left = rpgNode.offsetLeft - speed + 'px';
+                            break;
+                        case 'right':
+                            rpgNode.style.left = rpgNode.offsetLeft + speed + 'px';
+                            break;
+                        case 'lu':
+                            rpgNode.style.top = rpgNode.offsetTop - speed + 'px';
+                            rpgNode.style.left = rpgNode.offsetLeft - speed + 'px';
+                            break;
+                        case 'rightUp':
+                            rpgNode.style.top = rpgNode.offsetTop - speed + 'px';
+                            rpgNode.style.left = rpgNode.offsetLeft + speed + 'px';
+                            break;
+                        case 'ld':
+                            rpgNode.style.top = rpgNode.offsetTop + speed + 'px';
+                            rpgNode.style.left = rpgNode.offsetLeft - speed + 'px';
+                            break;
+                        case 'rd':
+                            rpgNode.style.top = rpgNode.offsetTop + speed + 'px';
+                            rpgNode.style.left = rpgNode.offsetLeft + speed + 'px';
+                            break;
+                    }
+                }, 100);
+            }
+        })
+    </script>
+</body>
+
+</html>

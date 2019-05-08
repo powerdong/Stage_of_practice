@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #water {
+            position: relative;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        #water img {
+            transition: all 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="water">
+
+    </div>
+
+    <script src="./waterfall.js"></script>
+    <script>
+        var div = document.getElementById('water');
+        // 包含图片路径的图片数组
+        var imgs = [];
+        var count = 1;
+        for (var i = 1; i <= 40; i++) {
+            count += 1;
+            count = count % 6;
+            if (count == 0) {
+                count = 1;
+            }
+            imgs.push('./img/' + count + '.png');
+
+
+
+        }
+
+        createWaterFall(div, imgs, 220)
+    </script>
+
+
+
+</body>
+
+</html>

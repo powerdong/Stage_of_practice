@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            margin: 0;
+        }
+        canvas{
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cavs" width="500" height="500"></canvas>
+
+    <script>
+    
+        var cavs = document.getElementById('cavs');
+        var ctx  = cavs.getContext('2d');//canvasRenderingContext2d  笔触
+        ctx.moveTo(100,100);//落笔点
+        ctx.lineTo(200,100);//两点之间的连线
+        ctx.lineTo(200,200);
+        // ctx.lineTo(100,100);
+        ctx.lineWidth = 20;//线条的粗细
+        ctx.strokeStyle = '#ff0000'//线条的颜色
+         ctx.fill();
+        // ctx.fillstyle = '#ccc';
+        ctx.closePath();  //闭合当前的路径
+        ctx.stroke();
+        
+        // ctx.beginPath();//开启当前的路径
+        // ctx.moveTo(300,100);
+        // ctx.lineTo(400,100);
+        // ctx.lineTo(400,200);
+        // // ctx.lineTo(100,100);
+        // ctx.lineWidth = 20;
+        // ctx.strokeStyle = '#ccc'
+        //  ctx.fill();
+        // // ctx.fillstyle = '#ccc';
+        // ctx.closePath();  
+        // ctx.stroke();
+    
+        var imgData = ctx.getImageData(70,70,160,160);//获取像素数据
+        ctx.putImageData(imgData,300,300);//把获得的像素数据放画板的某个位置上
+
+        ctx.clearRect(0,0,500,500);//清除某个区域的内容
+    
+    </script>
+</body>
+</html>

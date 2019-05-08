@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn {
+            position: fixed;
+            top: 100px;
+            left: 200px;
+            width: 100px;
+            height: 30px;
+            background: linear-gradient(to left, #0054ff, #00e4ff);
+            cursor: pointer;
+            color: #fff;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .wrap {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .box {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            margin: 100px auto;
+            border: 1px solid #fff;
+        }
+
+        .box span {
+            position: absolute;
+            color: #fff;
+            font-weight: bolder;
+            font-size: 40px;
+            top: 45%;
+            cursor: pointer;
+        }
+
+        .box span.left {
+            left: 0;
+        }
+
+        .box span.right {
+            right: 0;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn">点我打开弹层</div>
+    <div class="wrap">
+        <div class="box">
+            <img class="image" src="./images/1.png" alt="">
+            <span class="left">&lt;</span>
+            <span class="right">&gt;</span>
+        </div>
+    </div>
+    <script>
+        // 取出元素
+        var btn = document.getElementsByClassName('btn')[0];
+        var wrap = document.getElementsByClassName('wrap')[0];
+        var box = document.getElementsByClassName('box')[0];
+        var left = document.getElementsByClassName('left')[0];
+        var right = document.getElementsByClassName('right')[0];
+        var img = document.getElementsByClassName('image')[0];
+        // 记录展示图片索引
+        var nowIndex = 1;
+        //  初始化函数
+        function init() {
+            bindEvent();
+        };
+        init();
+        // 绑定事件
+        function bindEvent() {
+            btn.addEventListener('click', function () {
+                wrap.style.display = 'block';
+            });
+            wrap.addEventListener('click', function (e) {
+                wrap.style.display = 'none';
+            });
+            box.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+            // 点击按钮左右移动展示图片
+            left.addEventListener('click', function () {
+                move(-1);
+            });
+            right.addEventListener('click', function () {
+                move(1);
+            });
+        };
+        function move(num){
+            // 5张图片
+            var len = 5;
+            // 获得下一张图片索引
+            var now = nowIndex + num;
+            // 判断索引边界值
+            now = now >= 5 ? 5 : now;
+            now = now <= 1 ? 1 : now;
+            // 将索引赋值给全局记录展示的索引
+            nowIndex = now;
+            // 为遮罩层的图片更改背景图片src
+            img.setAttribute('src','./images/'+ now +'.png')
+        };
+    </script>
+</body>
+
+</html>

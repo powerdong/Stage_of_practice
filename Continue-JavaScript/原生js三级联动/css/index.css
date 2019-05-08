@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body{
+    background-color: aliceblue;
+}
+
+.container{
+    width: 300px;
+    margin: 50px auto;
+}
+
+.row{
+    width: 100%;
+    height: 42px;
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.row p{
+    display: inline-block;
+    line-height: 40px;
+    padding: 0 10px;
+    color: #38f;
+}
+
+.row p::after{
+    content: "|";
+    color: #ccc;
+    padding: 0 0 0 10px;
+}
+.row div{
+    display: inline-block;
+    width: 70%;
+    height: 100%;
+    color: #383838;
+}
+
+.row div select{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px; 
+    border-color: aliceblue;
+}

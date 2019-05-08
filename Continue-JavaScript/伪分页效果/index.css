@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.main {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.item {
+    width: 800px;
+    overflow: hidden;
+}
+
+ul li {
+    /* float: left; */
+    display: inline-block;
+    width: 350px;
+    height: 200px;
+    background-color: #f69;
+    margin: 10px 40px 10px 0;
+    text-align: center;
+    line-height: 200px;
+    color: #ffffff;
+    font-size: 60px;
+}
+
+.page_btn {
+    padding-top: 20px;
+    /* 设置文字不可选中 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.page_btn a {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+}
+
+.page_box {
+    float: right;
+}
+
+.num {
+    padding: 0 10px;
+}
