@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #323232;
+}
+.player{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+
+.player .player_nav{
+    height: 100px;
+    background: #ffff;
+    border-radius: 15px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+ 
+
+}
+.player .player_nav .player_CD{
+   position: relative;
+    height: 112px;
+    width: 112px;
+    top: -50%;
+    left: 10px;
+    border-radius: 50%;
+    margin-right: 40px;
+}
+.player .player_nav .player_CD::before{
+   content:'';
+   width: 25px;
+   height: 25px;
+   background: white;
+   position: absolute;
+   border-radius: 50%;
+   left: 50%;
+   top:50%;
+   transform: translate(-50%,-50%);
+   z-index: 9;
+ }
+ .player.play .player_CD::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    box-shadow: 0px 30px 28px -10px rgba(0, 0, 0, 0.2);
+  }
+.player .player_nav .player_CD .player_cdData{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+    display: none;
+}
+.player .player_nav .player_CD .player_cdData.active_song{
+    display: block;
+}
+.player .player_nav .player_concrol{
+
+    display: flex;
+    align-items: center;
+    /* 居中对象各项div元素 */
+    justify-content: space-around;
+    /* 平均分布是时候留空白 */
+    
+
+}
+
+.player_concrol>div{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    transition: all 0.2s ease-in-out;
+    font-size: 30px;
+}
+.player_concrol .player_prev svg{
+    transform: rotate(180deg);
+}
+.icon.pause{
+    display: none;
+}
+.player_concrol>div:hover{
+    background: #D7DCE2;
+}
+.player_concrol>div:hover svg{
+    fill:#ffff;
+}
+.player.play svg.play{
+    display:none;
+}
+.player.play svg.pause{
+    display:block;
+}
+.player_concrol .player_play svg{
+    font-size: 20px;
+}
+
+.icon{
+    width: 2em;
+    height: 2em;
+ 
+    fill: #D7DCE2;
+    cursor: pointer;
+}
+
+.back_Mask{
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    left: 5%;
+    top: 0;
+    background: rgb(124, 178, 243);
+    border-radius: 15px;
+    z-index: -1;
+    text-align: center;
+}
+.player_timeLineBar{
+    position: absolute;
+    right: 25px;
+    top:110px;
+    width: 230px;
+    height: 4px;
+    background: #D7DCE2;
+    z-index: 99;
+}
+.player_timeLineBar .player_duration{
+    width: 0;
+    height: 4px;
+    background: rgb(124, 178, 243);
+}
