@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        input[type=text] {
+            width: 500px;
+            height: 50px;
+            position: absolute;
+            left: 500px;
+            top: 200px;
+            border: 1px solid #000;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <input type="text">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script>
+        $('input').change(function () {
+            var value = $('input').val();
+
+            $.ajax({
+                type: "GET",
+                url: "https://www.tianqiapi.com/api/",
+                data: "version=v1&city=" + value + "",
+                jsonp: 'callback',
+                jsonpCallback: 'Callbacks',
+                dataType: "jsonp",
+                success: function (data) {
+                    console.log(data.data[0].wea);
+                    console.log(data.data[0].wea_img);
+                    console.log(data.data);
+                }
+            });
+
+            /**
+             * cityid	            当前城市ID
+                update_time     	气象台更新时间
+                wea	                天气情况
+                wea_img	            天气对应图标(xue, lei, shachen, wu, bingbao, yun, yu, yin, qing)
+                air	                空气质量
+                air_level       	空气质量等级
+                air_tips	        空气质量描述
+                humidity	        湿度
+                alarm	            预警信息
+                ┗ alarm_type	    预警类型
+                ┗ alarm_level	    预警级别
+                ┗ alarm_content 	预警信息
+                tem1	            高温/白天温度
+                tem2	            低温/晚上温度
+                tem	                当前温度
+                win	                风向(早/晚)
+                win_speed	        风速
+                hours	            小时天气
+                index	            生活指数
+           * 0: {day: "29日（今天）", date: "2019-04-29", week: "星期一", wea: "晴", wea_img: "qing", …}
+            1: {day: "30日（明天）", date: "2019-04-30", week: "星期二", wea: "晴", wea_img: "qing", …}
+            2: {day: "1日（后天）", date: "2019-05-01", week: "星期三", wea: "晴", wea_img: "qing", …}
+            3: {day: "2日（周四）", date: "2019-05-02", week: "星期四", wea: "晴转小雨", wea_img: "yu", …}
+            4: {day: "3日（周五）", date: "2019-05-03", week: "星期五", wea: "小雨转阴", wea_img: "yu", …}
+            5: {day: "4日（周六）", date: "2019-05-04", week: "星期六", wea: "小雨转阴", wea_img: "yu", …}
+            6: {day: "5日（周日）", date: "2019-05-05", week: "星期日", wea: "阴", wea_img: "yin", …}
+          */
+        })
+    </script>
+</body>
+
+</html>
+<!-- 
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>天气API - tianqiapi.com</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            text-align: left;
+            color: #808080;
+            font-size: 14px;
+            padding-top: 0px;
+            padding-left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--【济南】晴 9°/21°,8:00更新~-->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            type: 'GET',
+            url: 'https://www.tianqiapi.com/api/',
+            data: 'version=v1&city=',
+            jsonp: 'callback',
+            jsonpCallback: 'Callbacks',
+            dataType: "jsonp",
+            error: function () {
+                alert('网络错误');
+            },
+            success: function (res) {
+                console.log(res);
+
+                uptime = res.update_time.substring(11);
+                uptime = uptime.substring(0, uptime.length - 3);
+                $('body').append('【' + res.city + '】' + res.data[0].wea + ' ' + res.data[0].tem1 + '/' + res
+                    .data[0].tem2 + ',' + uptime + '更新~');
+            }
+        });
+    </script>
+</body>
+
+</html> -->

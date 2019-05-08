@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            position: relative;
+        }
+
+        .div1 {
+            position: absolute;
+            left: 5px;
+            top: 25px;
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1"></div>
+
+
+    <script>
+        var oDiv = document.getElementsByClassName('div1')[0];
+        var Left = oDiv.offsetWidth;
+        var Top = oDiv.offsetHeight;
+        var nowL, nowT, newL, newT;
+        var nowcookie = document.cookie.split('; ');
+        var cookL, cookT;
+        // 获取cookie的left 和 top值  设置给小方块
+        for (var i = 0; i < nowcookie.length; i++) {
+            var item = nowcookie[i].split('=');
+            
+            if (item[0] == 'left') {
+                cookL = item[1];
+            } else {
+                cookT = item[1];
+            }
+        }
+
+        
+        oDiv.style.left = cookL + 'px';
+        oDiv.style.top = cookT + 'px';
+
+
+
+        // oDiv.style.left = ;
+        oDiv.onmousedown = function (e) {
+
+            document.onmousemove = function (e) {
+                nowL = e.clientX;
+                nowT = e.clientY;
+                oDiv.style.left = -Left / 2 + nowL + 'px';
+                oDiv.style.top = -Top / 2 + nowT + 'px';
+            }
+        }
+        document.onmouseup = function (e) {
+            newL = oDiv.offsetLeft;
+            newT = oDiv.offsetTop;
+            // 将获取到的nowL  nowT  设置进cookie
+            document.cookie = 'left=' + newL + ';max-age=50000';
+            document.cookie = 'top=' + newT + ';max-age=50000';
+            document.onmousemove = '';
+        }
+    </script>
+</body>
+
+</html>

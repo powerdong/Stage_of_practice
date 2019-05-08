@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn"></button>
+    <ul id="ul"></ul>
+    <form action="">
+
+        <input type="text" id="username" name="username">
+        <input type="text" name="age" id="age">
+        <input type="submit" id="sub">
+    </form>
+
+    <script>
+        btn.onclick = function () {
+            ajax('GET', './getNews.php', '', showList, true);
+        }
+
+        sub.onclick = function (e) {
+            e.preventDefault();
+            var userName = username.value;
+            var userAge = age.value;
+            var data = 'username=' + userName + '&age=' + userAge;
+            ajax('post', './post.php', data, showPerson, true);
+        }
+        // 创建ajax对象
+
+        function ajax(method, url, data, callback, flag) {
+            var xhr = null;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new ActiveXObject('Microsoft.XMLHttp');
+            }
+
+            method = method.toUpperCase();
+            if (method == 'GET') {
+                xhr.open(method, url + '?' + data, flag);
+                xhr.send();
+            } else if (method == 'POST') {
+                xhr.open(method, url, flag);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+                xhr.send(data);
+            }
+
+            // 动态改变事件触发器
+            xhr.onreadystatechange = function () {
+                // 监听对象状态值
+                if (xhr.readyState == 4) {
+                    // 服务器返回的状态码   200==>成功  500==>错误
+                    if (xhr.status == 200) {
+                        callback(xhr.responseText);
+                    }
+                }
+            }
+        }
+
+
+        function showList(data) {
+            var value = JSON.parse(data);
+            var str = '';
+            value.forEach(function (ele, index) {
+                str += '<li>' + ele.title + '-' + ele.date + '</li>'
+            });
+            ul.innerHTML = str;
+        }
+
+        function showPerson(data) {
+            alert(data);
+        }
+    </script>
+</body>
+
+</html>
