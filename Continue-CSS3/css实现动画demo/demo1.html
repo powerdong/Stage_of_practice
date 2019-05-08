@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        .wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 100px auto;
+            transform-style: preserve-3d;
+            /* border: 1px solid #000; */
+            perspective: 600px;
+            animation: move 5s linear infinite;
+        }
+        
+        .wrapper:hover{
+            animation-play-state: paused;
+        }
+
+
+        .wrapper div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+
+        .item1 {
+            transform: translateZ(50px);
+            background-color: rgba(26, 188, 156, 0.5);
+        }
+
+        .item2 {
+            transform: translateZ(-50px);
+            background-color: rgba(230, 126, 34, 0.5);
+        }
+
+        .item3 {
+            transform: translate3d(50px, 0, 0) rotate3d(0, 1, 0, 90deg);
+            background-color: rgba(231, 76, 60, 0.5);
+        }
+
+        .item4 {
+            transform: translate3d(-50px, 0, 0) rotate3d(0, 1, 0, -90deg);
+            background-color: rgba(41, 128, 185, 0.5);
+        }
+
+        .item5 {
+            transform: translate3d(0, -50px, 0) rotate3d(1, 0, 0, 90deg);
+            background-color: rgba(243, 156, 18, 0.5);
+        }
+
+        .item6 {
+            transform: translate3d(0, 50px, 0) rotate3d(1, 0, 0, -90deg);
+            background-color: rgba(155, 89, 182, 0.5);
+        }
+
+
+
+        @keyframes move {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 实现一个旋转的立方体
+        鼠标hover时动画暂停
+        移出动画开始 -->
+
+        
+    <div class="wrapper">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item4">4</div>
+        <div class="item5">5</div>
+        <div class="item6">6</div>
+    </div>
+</body>
+
+</html>

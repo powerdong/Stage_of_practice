@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>炫酷方盒子</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #222;
+        }
+
+        div.wrap {
+            width: 200px;
+            perspective: 1000px;
+            /*景深*/
+
+            /* h未知居中写法 */
+            position: absolute;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            left: 50%;
+        }
+
+        div.cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            /* 转换为3d */
+            /* 设置父级 */
+            transform-style: preserve-3d;
+
+            transform: rotateX(-50deg) rotateY(-50deg) rotateZ(0deg);
+            
+            animation: auto 8s infinite linear;
+            
+        
+        }
+        div.cube:hover>div{
+            background-color: currentColor;
+            box-shadow: 0 0 40px currentColor;
+        }
+        .cube>div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            box-shadow:  0 0 10px currentColor;
+        }
+
+        .cube .out_front {
+            color: #FABC04;
+            transform: translateZ(100px);
+        }
+        .cube .out_back {
+            color: #0492CE;
+            transform: translateZ(-100px);
+        }
+        .cube .out_left {
+            color: #D0EA2B;
+            transform: translateX(-100px) rotateY(90deg);
+        }
+        .cube .out_right {
+            color: #0447FE;
+            transform: translateX(100px) rotateY(-90deg);
+        }
+        .cube .out_top {
+            color: #A7194B;
+            transform: translateY(-100px) rotateX(90deg);
+        }
+        .cube .out_bottom {
+            color: #8603AF;
+            transform: translateY(100px) rotateX(90deg);
+        }
+
+        @keyframes auto{
+            0%{
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100%{
+                transform: rotateX(360deg) rotateY(720deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="cube">
+            <div class="out_front"></div>
+            <div class="out_back"></div>
+            <div class="out_left"></div>
+            <div class="out_right"></div>
+            <div class="out_top"></div>
+            <div class="out_bottom"></div>
+        </div>
+    </div>
+</body>
+
+</html>
