@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div {
+            position: absolute;
+            left: 800px;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+        }
+
+        button {
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div></div>
+    <button>start</button>
+
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        var button = document.getElementsByTagName('button')[0];
+
+
+        button.onclick = function () {
+            startMove(div);
+        }
+
+        function startMove(ele) {
+            var iSpeed;
+            var num = 8; //每次移动的距离
+            var stop = 300; //运动后停止的位置
+            var timer;
+            var interval = 30; //运动周期
+            var time = 8;   //设定缓冲次数
+            clearInterval(ele.timer);
+        
+            ele.timer = setInterval(function () {
+                iSpeed = (stop - ele.offsetLeft) /  time;
+                iSpeed = iSpeed > 0 ?Math.ceil(iSpeed) :Math.floor(iSpeed);
+                if(ele.offsetLeft === stop){
+                    clearInterval(ele.timer);
+                }else{
+                    ele.style.left = ele.offsetLeft + iSpeed + 'px';
+                }
+            }, interval);
+
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>

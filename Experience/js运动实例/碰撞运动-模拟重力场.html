@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+        }
+
+        button {
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div></div>
+    <button>start</button>
+
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        var button = document.getElementsByTagName('button')[0];
+        var lastLeft = div.offsetLeft;
+        var lastTop = div.offsetTop;
+
+        div.onmousedown = function(e){
+            clearInterval(this.timer);
+            var e = e || window.event;
+            var disX = e.clientX - this.offsetLeft;
+            var disY = e.clientY - this.offsetTop;
+            var that = this;
+            var iSpeedX = 0;
+            var iSpeedY = 0;
+
+            document.onmousemove = function(e){
+                var newLeft = e.clientX - disX;
+                var newTop = e.clientY - disY;
+
+                iSpeedX = newLeft - lastLeft;
+                iSpeedY = newTop - lastTop;
+
+                lastLeft = newLeft;
+                lastTop = newTop;
+
+                that.style.left = newLeft + 'px';
+                that.style.top = newTop + 'px';
+
+            }
+
+            document.onmouseup = function(){
+                document.onmousemove = null;
+                document.onmouseup = null;
+                startMove(that,iSpeedX,iSpeedY);
+            }
+        }
+
+
+        button.onclick = function () {
+            startMove(div,60,8);
+        }
+
+        function startMove(ele,iSpeedX,iSpeedY) {
+            clearInterval(ele.timer);
+            // var iSpeedX = 60; //横向速度
+            // var iSpeedY = 8;    //纵向速度
+            var g = 6; //加速度
+
+            ele.timer = setInterval(function () {
+                iSpeedY += g;
+                var newLeft = ele.offsetLeft + iSpeedX;
+                var newTop = ele.offsetTop + iSpeedY;
+                if(newTop >= document.documentElement.clientHeight - ele.offsetHeight){
+                    iSpeedY *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newTop = document.documentElement.clientHeight - ele.offsetHeight;
+                }
+                if(newLeft >= document.documentElement.clientWidth - ele.offsetWidth){
+                    iSpeedX *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newLeft = document.documentElement.clientWidth - ele.offsetWidth;
+                }
+                if(newTop <= 0){
+                    iSpeedY *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newTop = 0;
+                }
+                if(newLeft <= 0){
+                    iSpeedX *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newLeft = 0;
+                }
+
+                if(Math.abs(iSpeedX) < 1){
+                    iSpeedX = 0;
+                }
+
+                if(Math.abs(iSpeedY) < 1){
+                    iSpeedY = 0;
+                }
+                if(iSpeedX == 0 && iSpeedY == 0 && newTop == document.documentElement.clientHeight - ele.offsetHeight){
+                    clearInterval(ele.timer);
+                }
+                ele.style.left = newLeft + 'px';
+                ele.style.top = newTop + 'px';
+
+            }, 30);
+
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>
