@@ -1,5 +1,5 @@
 /**
- * 
+ * 防抖函数
  * @param {*} func 回调功能函数
  * @param {*} time 延迟时间
  * @param {*} flag 是否立即执行   true->立即执行 false->不立即执行
