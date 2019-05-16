@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul>li {
+            width: 300px;
+            height: 50px;
+            background-color: #ddd;
+            font-size: 30px;
+            text-align: center;
+            list-style: none;
+            margin: 10px;
+        }
+
+        .clear {
+            width: 500px;
+            height: 300px;
+            background-color: #999;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ul>
+        <li draggable="true">1</li>
+        <li draggable="true">2</li>
+        <li draggable="true">3</li>
+        <li draggable="true">4</li>
+        <li draggable="true">5</li>
+    </ul>
+
+
+
+    <div class="clear"></div>
+
+
+
+    <script>
+        var oLi = document.getElementsByTagName('li'),
+            oUl = document.getElementsByTagName('ul')[0],
+            oClear = document.getElementsByClassName('clear')[0],
+            len = oLi.length;
+
+        function bindLiEvent() {
+
+            for (let i = 0; i < len; i++) {
+                oLi[i].ondragstart = function (e) {
+                    var index = getIndex(this);
+                    console.log('开始');
+                    console.log(e.target.innerText);
+                    
+                    e.dataTransfer.setData('data', e.target.innerText);
+                }
+                oLi[i].addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                })
+                oLi[i].addEventListener('drop', function (e) {
+                    var i = e.dataTransfer.getData('data');
+                    console.log(i);
+                    
+                    oUl.insertBefore(oLi[i], this);
+                })
+            }
+        }
+        bindLiEvent();
+
+        function getIndex(dom) {
+            for (let i = 0; i < len; i++) {
+                if (oLi[i] === dom) {
+                    return i;
+                }
+            }
+        }
+
+        function removeLi() {
+            oClear.addEventListener('dragover', function (e) {
+                e.preventDefault();
+            });
+            oClear.addEventListener('drop', function (e) {
+                var index = e.dataTransfer.getData('data');
+                oLi[index].remove();
+            })
+        }
+        // removeLi();
+
+        function file() {
+            oClear.addEventListener('dragover', function (e) {
+                e.preventDefault();
+            });
+            oClear.addEventListener('drop', function (e) {
+                e.preventDefault();
+                console.log(e);
+                var dt = e.dataTransfer;
+                var files = dt.files;
+                console.log(files);
+            })
+        }
+        // file();
+    </script>
+</body>
+
+</html>
