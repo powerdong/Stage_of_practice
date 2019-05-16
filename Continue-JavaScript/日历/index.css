@@ -1,0 +1,39 @@
+.calender-container{
+    width: 500px;
+    background-color: #008c8c;
+    border-radius: 5px;
+    padding: 1em;
+    color: #fff;
+    user-select: none;
+}
+
+.calendar-select{
+    text-align: center;
+}
+.calendar-content,
+.calendar-week{
+    display: grid;
+    /* fr表示比例  7列 每份一样 */
+    grid-template-columns: repeat(7,1fr); 
+    /* 格子项排列方式 */
+    place-items: center;
+    grid-row-gap:10px; 
+}
+
+.calendar-week{
+    margin: 1em 0;
+}
+
+.calendar-content span{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.calendar-content span.active{
+    background-color: #fff;
+    color: #008c8c;
+    border-radius: 50%;
+}
