@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        window.navigator.geolocation.getCurrentPosition(suc, err, options);
+
+        function suc(pro) {
+            console.log(pro);
+
+        }
+
+        function err(err) {
+            console.log(err);
+        }
+
+        var options = {
+            enableHighAccuracy: true
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script>
+        $.ajax({
+            type: "get",
+            url: "https://apis.map.qq.com/ws/coord/v1/translate&output=jsonp&type=3",
+            data: "locations=39.12,116.83;30.21,115.43&key=LTBBZ-Q7JWF-WRJJE-JWXBR-W23TE-GWBQG",
+            dataType: "jsonp",
+            jsonp:"callback",
+            jsonpCallback:"Callbacks",
+            success: function (response) {
+                console.log(response);
+                
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

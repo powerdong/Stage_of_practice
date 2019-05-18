@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //定义一个最低速度
+        var SHAKE_THRESHOLD = 800;
+        // 上次执行的时间
+        var last_update = 0;
+        // 记录坐标
+        var x,
+            y,
+            z,
+            last_x = 0,
+            last_y = 0,
+            last_z = 0;
+
+        function deviceMotionHeader(eventData) {
+            // 存重力加速度，包括重心引力，x,y,z轴上的方向
+            var acceleration = eventData.accelerationIncludingGravity;
+            // 存时间，用来比较两次调用时间差
+            var curTime = new Date().getTime();
+            // 两次执行时间不能太近
+            if ((curTime - last_update) > 300) {
+                var diffTime = curTime - last_update;
+                last_update = curTime;
+                x = acceleration.x;
+                y = acceleration.y;
+                z = acceleration.z;
+                // *10000 来与 800 相比较
+                var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+                if (speed > SHAKE_THRESHOLD) {
+                    // 执行要在摇一摇后执行的事件
+                }
+                // 更新上次的x,y,z信息
+                last_x = x;
+                last_y = y;
+                last_z = z;
+            }
+        }
+
+        // 注册监听加速度变化事件
+        window.addEventListener('devicemotion', deviceMotionHeader, false);
+    </script>
+
+
+</body>
+
+</html>

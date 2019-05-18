@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>旋转： <span id="alpha"></span></p>
+    <p>前后： <span id="beta"></span></p>
+    <p>扭转： <span id="gamma"></span></p>
+    <p>角度： <span id="heading">当前不支持查看</span></p>
+
+    <script>
+        function DeviceOrientationHandler(event) {
+            // 表示设备沿z轴上的旋转角度，范围为0~360
+            var alpha = event.alpha,
+                // 表示设备在x轴上的旋转角度，范围为-180~180.
+                // 它描述的是设备由当前向后旋转的情况
+                beta = event.beta,
+                // 表示设备在y轴上的旋转角度。范围为-90~90；
+                // 它描述的是设备由左向右旋转的情况
+                gamma = event.gamma,
+                // 与正北方向的角度差值。
+                // 正北为0度，正东为90度，正南为180度，正西为270度
+                // 因为0度表示正北，所以叫指北针
+
+                webkitCompassHeading = event.webkitCompassHeading;
+
+
+            if (alpha != null || beta != null || gamma != null) {
+
+                // 判断屏幕方向
+                var html = "";
+                if (gamma > 0) {
+                    html = "向右倾斜" + gamma;
+                } else {
+                    html = "向左倾斜" + gamma;
+                }
+                document.getElementById('gamma').innerHTML = html;
+
+
+                var str = "";
+                if (beta > 0) {
+                    str = "向前倾斜" + beta;
+                } else {
+                    str = "向后倾斜" + beta;
+                }
+                document.getElementById('beta').innerHTML = str;
+
+                var head = "";
+                var headNum = Math.round(Math.round(webkitCompassHeading / 45) + 7) % 8;
+                switch (headNum) {
+                    case 0:
+                        head = '东北';
+                        break;
+                    case 1:
+                        head = '东';
+                        break;
+                    case 2:
+                        head = '东南';
+                        break;
+                    case 3:
+                        head = '南';
+                        break;
+                    case 4:
+                        head = '西南';
+                        break;
+                    case 5:
+                        head = '西';
+                        break;
+                    case 6:
+                        head = '西北';
+                        break;
+                    case 7:
+                        head = '北';
+                        break;
+                }
+                document.getElementById('alpha').innerHTML = alpha;
+                if (webkitCompassHeading) {
+                    document.getElementById('heading').innerHTML = head + '  ' + webkitCompassHeading;
+                }
+            } else {
+                document.body.innerHTML("当前浏览器不支持");
+            }
+
+        }
+
+
+
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', DeviceOrientationHandler, false);
+        } else {
+            alert('您的浏览器不支持');
+        }
+    </script>
+
+</body>
+
+</html>
