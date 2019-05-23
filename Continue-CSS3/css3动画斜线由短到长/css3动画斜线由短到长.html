@@ -1,0 +1,64 @@
+****
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>我的练习</title>
+    <style type="text/css">
+        .qqq {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background: #ccc;
+        }
+        
+        .line {
+            height: 3px;
+            width: 400px;
+            background: #c56;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            -webkit-transform: rotate(45deg);
+            animation: mymove 5s infinite;
+            -webkit-animation: mymove 5s infinite;
+            /* Safari 和 Chrome */
+            -moz-transform-origin: 0% 0%;
+            -webkit-transform-origin: 0% 0%;
+            -o-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+        }
+        
+        @keyframes mymove {
+            from {
+                width: 0px;
+            }
+            to {
+                width: 400px;
+            }
+        }
+        
+        @-webkit-keyframes mymove
+        /*Safari and Chrome*/
+        
+        {
+            from {
+                width: 0px;
+            }
+            to {
+                width: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="qqq">
+        <div class="line animated"></div>
+        <div style="width:200px;height:200px;position:absolute;top:100px;left:100px;border-radius:100%;text-align:center;line-height:200px;background:-webkit-linear-gradient(bottom,#55d3b3 0%,#55d3b3 80%,#ee5858 80%,#ee5858 100%)">90%</div>
+    </div>
+</body>
+
+</html>

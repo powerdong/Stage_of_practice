@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+             /* 重置html内所有padding margin */
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            body {
+                /* 景深 */
+                perspective: 1000px;
+            }
+            #cube {
+                /* 相对定位 */
+                position: relative;
+                left: 0;
+                top: 0;
+                width: 200px;
+                height: 200px;
+                /* 设置旋转元素的基点位置 */
+                transform-origin: 50% 50% -100px;
+                /*设置3D的环境*/
+                transform-style: preserve-3d;
+                /* 规定完成过渡效果需要多少秒或毫秒 */
+                transition: 2s;
+                /* 旋转元素 */
+                transform: translateX(60px) translateY(300px) translateZ(60px);
+            }
+            #cube>div{
+                width:100%;
+                height:100%;
+                /* 定义边框 */
+                border:1px solid #000;
+                /* 相对定位 */
+                position:absolute;
+                /* 背景颜色 */
+                background:rgba(51,51,51,.3);
+                /* 过渡渐变属性 */
+                transition: transform 0.3s ease-in;
+            }
+            #cube div.out-front{
+                /* 对元素进行旋转、缩放、移动或倾斜 */
+                transform:translateZ(100px);
+            }
+            #cube div.out-back{
+                transform:translateZ(-100px) rotateY(180deg);
+            }
+            #cube div.out-left{
+                transform:translateX(-100px) rotateY(-90deg);
+            }
+            #cube div.out-right{
+                transform:translateX(100px) rotateY(90deg);
+            }
+            #cube div.out-top{
+                transform:translateY(-100px) rotateX(90deg);
+            }
+            #cube div.out-bottom{
+                transform:translateY(100px) rotateX(-90deg);
+            }
+            body {
+                background-color: black;
+            }
+
+            #heard {
+                position: relative;
+                width: 300px;
+                height: 600px;
+                margin: 100px auto;
+                transform-style: preserve-3d;
+                transform: rotateX(20deg) rotateY(0deg) rotateZ(50deg);
+                /* transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); */
+                /* 动画运动 */
+                animation: rot 10s infinite linear;
+            }
+            /* 帧动画配合 animation使用 */
+            @keyframes rot {
+                0% {
+                    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg)
+                }
+                100% {
+                    transform: rotateY(720deg) rotateX(360deg) rotate(360deg)
+                }
+            }
+
+            #heard div.heard {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 300px;
+                height: 600px;
+                /*border: 2px solid red;*/
+                border-left: 0;
+                border-bottom: 0;
+                /* border-radius：左上 右上 右下 左下 */
+                border-radius: 50% 50% 0 /40% 50% 0;
+            }
+
+            #cube img {
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id=heard>
+            <div id="cube">
+                <div class="out-front">
+                    <img src="img/1.jpg" alt="">
+                </div>
+                <div class="out-back">
+                    <img src="img/2.jpg" alt="">
+                </div>
+                <div class="out-left">
+                    <img src="img/3.jpg" alt="">
+                </div>
+                <div class="out-right">
+                    <img src="img/4.jpg" alt="">
+                </div>
+                <div class="out-top">
+                    <img src="img/5.jpg" alt="">
+                </div>
+                <div class="out-bottom">
+                    <img src="img/6.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script type="text/javascript">
+        // 定义颜色
+        // var colors = ["#FFB6C1", "#DB7093", "#FF69B4", "#483D8B","# 4169E1", "#87CEFA","#00BFFF", "#5F9EA0","#00FA9A", "#00FF7F","#7FFF00", "#FFFFE0", "#F5DEB3", "#BC8F8F", "#800000"];
+        // 获取父元素
+        var heard= document.getElementById("heard");
+        // 循环出来  心的线条
+        for(var i = 0; i < 36; i++) {
+            // 创建一个线条
+            var cdiv = document.createElement("div");
+            // 为当前创建出来  元素添加class
+            cdiv.className = "heard";
+            // 给当前创建出来div添加边框颜色
+            // cdiv.style.border="2px solid "+colors[i%15];
+            cdiv.style.border="2px solid #e4393c";
+            // 不存在的边框
+            cdiv.style.borderLeft="0";
+            cdiv.style.borderBottom="0";
+            //旋转当前创建出来div 每一个div下标增加10deg
+            cdiv.style.transform = "rotateY(" + i * 10 + "deg) rotateZ(45deg) translateX(150px)";
+            // 将创建出来的div追加到 当前父元素
+            heard.appendChild(cdiv);
+        }
+    </script>
+</html>

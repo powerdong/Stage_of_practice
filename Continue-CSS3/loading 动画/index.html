@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="text">
+        <h2>HAPPY NEW YEAR!</h2>
+        <h3>Light your fire</h3>
+    </div>
+    <div class="monster pink">
+        <div class="eye">
+            <div class="eyeball"></div>
+        </div>
+        <div class="mouth"></div>
+    </div>
+    <div class="monster blue">
+        <div class="eye">
+            <div class="eyeball"></div>
+        </div>
+        <div class="mouth"></div>
+    </div>
+    <div class="page-loading">
+        <div class="monster pink">
+            <div class="eye">
+                <div class="eyeball"></div>
+            </div>
+            <div class="mouth"></div>
+        </div>
+        <div class="loading">
+            <div class="ball"></div>
+        </div>
+    </div>
+    <script>
+        var per = 0;
+        var ball = document.getElementsByClassName('ball')[0];
+        var loading = document.getElementsByClassName('loading')[0];
+        var pageLoading = document.getElementsByClassName('page-loading')[0];
+        var timer = setInterval(function() {
+            ball.style.width = per + '%';
+
+            if (per == 100) {
+                clearInterval(timer);
+                pageLoading.style.opacity = 0;
+                pageLoading.classList.add('complete');
+            } else {
+                per += 1;
+            }
+        }, 30)
+    </script>
+</body>
+
+</html>
