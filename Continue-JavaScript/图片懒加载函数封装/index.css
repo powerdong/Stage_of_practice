@@ -1,0 +1,11 @@
+.container{
+    width: 600px;
+    margin: 0 auto;
+}
+
+.container img{
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    display: inline-block;
+}
