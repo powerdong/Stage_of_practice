@@ -2,7 +2,7 @@ var squareSet; //游戏区域
 var nextElement = null; //下一个图形
 var dynamicElement = null; //上一个图形
 var elementType = []; //方块样式集合
-var colorType = ["#49bdff", "#fe8602"]; //颜色集合
+var colorType = ["#49bdff", "#fe8602", "#26e552", "#f71d30","#ffdb01"]; //颜色集合
 var tetris = document.getElementById('tetris'); //游戏区域
 var score = 0; //成绩
 var timer = null; //定时器
