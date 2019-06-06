@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <video src="./1.mp4"></video>
+        <!-- 蒙层 -->
+        <div class="modal pause">
+            <i class="iconfont iconbofang"></i>
+            <div class="tool-bar">
+                <div class="progress-bar">
+                    <div class="bg"></div>
+                    <div class="slider"></div>
+                </div>
+                <i class="iconfont iconbofang1 left"></i>
+                <div class="left time">
+                    <span id="spancur">00:00</span>
+                    /
+                    <span id="spantotal">16:00</span>
+                </div>
+                <i class="iconfont iconquanping right"></i>
+                <div class="iconfont iconicon_set_up right">
+                    <ul>
+                        <li>2</li>
+                        <li>1.5</li>
+                        <li class="active">1.25</li>
+                        <li>1</li>
+                        <li>0.75</li>
+                        <li>0.5</li>
+                    </ul>
+                </div>
+                <div class="iconfont iconyinliang right">
+                    <input type="range" id="volume">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>

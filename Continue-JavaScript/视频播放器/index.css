@@ -1,0 +1,156 @@
+@import "//at.alicdn.com/t/font_1228248_krvwaz0pw3g.css";
+
+.container{
+    width: 600px;
+    height: 450px;
+    background: black;
+    margin: 0 auto;
+    position: relative;
+}
+
+.container video{
+    width: 100%;
+    height: 100%;
+}
+
+.container .modal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+
+.container .modal.pause{
+    background: rgba(0,0,0,0.5)
+}
+
+.container .modal .iconbofang{
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+    display: none;
+    transition: all 1s;
+    transform: scale(2);
+    opacity: 0;
+}
+
+.container .modal.pause .iconbofang{
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.container .modal .tool-bar .left{
+    float: left;
+    margin-right: 10px;
+}
+
+.container .modal .tool-bar .right{
+    float: right;
+    margin-left: 10px;
+}
+
+.container .modal:hover .tool-bar{
+    display: block;
+}
+.container .modal .tool-bar{
+    position: absolute;
+    height: 45px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #000;
+    cursor: auto;
+    color: #fff;
+    line-height: 45px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: none;
+}
+
+
+.container .tool-bar .time{
+    font-size: 12px;
+}
+
+.container .tool-bar .iconyinliang{
+    font-size: 22px;
+    width: 27px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.container .tool-bar .iconyinliang:hover{
+    width: 180px;
+}
+.container .tool-bar .iconicon_set_up{
+    font-size: 22px;
+    width: 27px;
+    height: 45px;
+    position: relative;
+}
+.container .tool-bar .iconicon_set_up:hover ul{
+    display: block;
+}
+
+.container .tool-bar .iconicon_set_up ul{
+    position: absolute;
+    bottom: 40px;
+    left: -15px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 4px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 12px;
+    line-height: 3;
+    display: none;
+}
+
+.container .tool-bar .iconicon_set_up ul .active{
+    color: orange;
+}
+
+.container .modal .tool-bar .progress-bar{
+    position: absolute;
+    left: 0;
+    top: -5px;
+    height: 5px;
+    background: #fff;
+    width: 100%;
+    cursor: pointer;
+}
+
+.progress-bar .bg{
+    background-color: skyblue;
+    width: ;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+
+.progress-bar .slider{
+    width: 20px;
+    height: 20px;
+    background: skyblue;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    position: absolute;
+    left: 0;
+    top: -7px;
+    transform: translateX(-50%);
+}
