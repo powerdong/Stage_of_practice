@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    float: left;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
+#date {
+    width: 406px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 25px 30px;
+    background: #555450;
+}
+
+.time1 {
+    height: 64px;
+    font: 43px/64px "微软雅黑";
+    color: #fff;
+}
+
+.time2 {
+    height: 38px;
+    font: 18px/38px "微软雅黑";
+    color: #429ce3;
+}
+
+.time3 {
+    height: 53px;
+    color: #dddddc;
+    margin: 15px 0;
+    font: 25px/53px "微软雅黑";
+}
+
+.time3 strong {
+    float: left;
+    font-weight: normal;
+}
+
+.time3 div {
+    float: right;
+
+}
+
+.time3 div span {
+    font-size: 45px;
+    cursor: pointer;
+    margin: 0 10px 0 10px;
+}
+
+#date ul {
+    font-size: 0;
+}
+
+.number {
+    font-size: 0;
+}
+
+#date ul li,
+.number span {
+    width: 58px;
+    height: 51px;
+    font: 22px/51px "微软雅黑";
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+}
+
+.number span.color {
+    color: #8d8c89;
+}
+
+.number span.active {
+    background: #0078d7;
+}
