@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+body{
+    background: #000;
+}
+#wrapper{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 50px;
+    left: 80%;
+    margin-left: -100px;
+    animation: moonline 30s linear;
+    z-index: 999;
+}
+
+@keyframes moonline{
+    0%{
+        top: 250px;
+        left: 0%;
+        opacity: 0;
+    }
+    40%{
+        top: 150px;
+        left: 40%;
+        opacity: 0.5;
+    }
+    80%{
+        top: 50px;
+        left: 80%;
+        opacity: 1;
+    }
+}
+
+#circle{
+    width: 200px;
+    height: 200px;
+    background: #efefef;
+    border-radius: 50%;
+    box-shadow: 0 0 40px #fff;
+    animation: moonright 30s linear;
+}
+
+@keyframes moonright{
+    0%{
+        box-shadow: 0 0 10px #fff;
+    }
+    50%{
+        box-shadow: 0 0 25px #fff;
+    }
+    100%{
+        box-shadow: 0 0 50px #fff;
+    }
+}
+
+span{
+    width: 30px;
+    height: 30px;
+    background-image: url('./star.png') ;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    animation: flash 1s alternate infinite;
+    z-index: 1;
+}
+
+
+span:hover{
+    transform: scale(3,3) rotate(180deg) !important;
+    transition: all 1s;
+}
+
+@keyframes flash{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
