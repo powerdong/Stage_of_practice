@@ -1,0 +1,66 @@
+h1{
+    text-align: center;
+}
+
+.game{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 480px;
+    height: 480px;
+    margin: 30px auto;
+    cursor: pointer;
+}
+
+.game li{
+    width: 80px;
+    height: 80px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    float: left;
+    position: relative;
+}
+
+.game li::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #008c8c;
+    transition:  0.5s;
+}
+
+.game li img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform: rotateY(-180deg);
+    backface-visibility: hidden;
+    transition: .5s;
+    
+}
+
+.game li.flip::before{
+    transform: rotateY(-180deg)''
+}
+
+.game li.flip img{
+    transform: rotateY(0deg);
+}
+
+.game li.flip.success::after{
+    content: "";
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.game li.flip.success img,
+.game li.flip.success::before{
+    display: none;
+}
