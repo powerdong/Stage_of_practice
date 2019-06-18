@@ -1,0 +1,25 @@
+html {
+    background: #172f38;
+    color: #d7dbdd;
+    padding: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    
+}
+
+.container span {
+    float: left;
+    min-width: 2em;
+    margin-right: .5em;
+}
+
+.center {
+    position: fixed;
+    left: 50%;
+    color: rgba(255, 255, 255, .65);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8em;
+    font-weight: bold;
+    transition: all 1s ease-in, opacity 0.7s ease-in 0.3s;
+}
