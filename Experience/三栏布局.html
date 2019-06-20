@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
+    <!-- <style>
         * {
             margin: 0;
             padding: 0;
@@ -144,10 +144,35 @@
         .con5 .right{
             margin-left:-300px;
         }
+    </style> -->
+    <style>
+        /*css代码段如下*/
+        .line-align-center-three {
+            height: 400px;
+            border: 1px solid #e4393c;
+            text-align: center;
+        }
+
+        .mark-three {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ccc;
+            color: #fff;
+        }
     </style>
 </head>
 
+
 <body>
+
+        <!-- <-- html代码段如下--> -->
+        <div class="line-align-center-three">
+           <span class="mark-three">
+              这里是一个行内元素
+           </span>
+        </div>
+       
     <!-- 左右栏定宽   中间宽度自适应 -->
     <!-- 1,绝对定位 + margin -->
     <!-- <div class="con1">
@@ -176,6 +201,8 @@
         <div class="left"></div>
         <div class="right"></div>
     </div>
+
+
 
     <!-- 5，双飞翼布局 -->
     <!-- <div class="con5">

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #game {
+            width: 800px;
+            height: 600px;
+            border: 2px solid;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #game .sky {
+            width: 1600px;
+            height: 600px;
+            background: url("img/sky.png");
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #game .land {
+            width: 1600px;
+            height: 112px;
+            background: url("img/land.png");
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        #game .bird {
+            width: 33px;
+            height: 26px;
+            background: url("img/bird.png");
+            position: absolute;
+            left: 200px;
+            top: 150px;
+            background-position: -8px -10px;
+            z-index: 1;
+        }
+
+        #game .pipeup {
+            background: url("img/pipeDown.png") no-repeat left bottom;
+            width: 52px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        #game .pipedown {
+            background: url("img/pipeUp.png") no-repeat;
+            width: 52px;
+            height: 200px;
+            position: absolute;
+            bottom: 112px;
+            right: 0;
+        }
+
+        #game .over {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .5);
+            color: #fff;
+            font-size: 4em;
+            text-align: center;
+            line-height: 600px;
+            z-index: 2;
+            display: none;
+        }
+
+        .msg{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game">
+        <div class="over">
+            游戏结束
+        </div>
+        <div class="sky"></div>
+        <div class="land"></div>
+        <div class="bird"></div>
+    </div>
+    <p class="msg">
+        回车键开始/暂停，空格键跳跃
+    </p>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
