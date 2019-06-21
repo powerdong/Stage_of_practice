@@ -1,0 +1,90 @@
+h1{
+    text-align: center;
+}
+
+.container {
+    /* 弹性盒 */
+    display: flex;
+    justify-content: center;
+}
+
+.container .left {
+    padding: 10px;
+    width: 80px;
+    background: #eee;
+}
+
+.container .left .item {
+    margin-bottom: 10px;
+}
+
+.item {
+    width: 100%;
+    line-height: 40px;
+    text-align: center;
+    cursor: move;
+}
+
+.color1 {
+    background: #f26395;
+}
+
+.color2 {
+    background: #62efab;
+}
+
+.color3 {
+    background: #ef7658;
+}
+
+.color4 {
+    background: #ffe868;
+}
+
+.color5 {
+    background: #80e3f7;
+}
+
+.color6 {
+    background: #d781f9;
+}
+
+.color7 {
+    background: #62efab;
+}
+
+.container .right {
+    background: #eee;
+    width: 800px;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.container .right table{
+    width: 100%;
+}
+
+.container .right td,
+.container .right th {
+    border: 1px solid #999;
+    height: 33px;
+    padding: 8px;
+    text-align: center;
+}
+
+.container .right col:first-child{
+    width: 40px;
+} 
+
+.container .right .span{
+    line-height: 40px;
+}
+
+.container .right thead td:first-child, .container .right .noborder{
+    border: none;
+}
+
+.container .right th{
+    font-weight: normal;
+    background: #ccc;
+}

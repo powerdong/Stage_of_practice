@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body style="text-align: center">
+    <h1>
+        课程表
+    </h1>
+    <div id="divcontainer" class="container">
+        <div class="left" data-allowed="true">
+            <div draggable="true" class="color1 item">语文</div>
+            <div draggable="true" class="color2 item">数学</div>
+            <div draggable="true" class="color3 item">英语</div>
+            <div draggable="true" class="color4 item">音乐</div>
+            <div draggable="true" class="color5 item">政治</div>
+            <div draggable="true" class="color6 item">历史</div>
+            <div draggable="true" class="color7 item">体育</div>
+        </div>
+        <div class="right">
+            <table>
+                <!-- 列的分组 -->
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <td></td>
+                        <th>星期一</th>
+                        <th>星期二</th>
+                        <th>星期三</th>
+                        <th>星期四</th>
+                        <th>星期五</th>
+                        <th>星期六</th>
+                        <th>星期日</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="4" class="span">上午</th>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"><div draggable="true" class="color7 item">体育</div></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                    </tr>
+                    <tr>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                    </tr>
+                    <tr>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                    </tr>
+                    <tr>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="8" class="noborder"></td>
+                    </tr>
+
+                    <tr>
+                        <th rowspan="4" class="span">下午</th>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                    </tr>
+                    <tr>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                    </tr>
+                    <tr>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                    </tr>
+                    <tr>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                        <td data-allowed="true"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
