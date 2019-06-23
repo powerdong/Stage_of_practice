@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,h1,h2,h3,h4,p,dl,dt,dd{
+				margin: 0;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			img{
+				border: none;
+			}
+			html{
+				width: 100%;
+				overflow-x: hidden;
+			}
+			body{
+				background: #000000;
+				font-family: "微软雅黑";
+				color: #fff;
+			}
+			.clear:after,.center:after{
+				clear: both;
+				content: '';
+				display: block;
+			}
+			.center{
+				width: 960px;
+				margin: 0 auto;
+			}
+			
+			
+			/*抖动*/
+			@keyframes shake{
+				0%{
+					margin: 0px 0 0 0px;
+				}
+				10%{
+					margin: -40px 0 0 -40px;		/*上左*/
+				}
+				15%{
+					margin: -40px -40px 0 0px;		/*上右*/
+				}
+				20%{
+					margin: 0px -40px -40px 0px;	/*右下*/
+				}
+				25%{
+					margin: 0px 0px -40px -40px;	/*左下*/
+				}
+				
+				30%{
+					margin: -20px 0 0 -20px;		/*上左*/
+				}
+				40%{
+					margin: -20px -20px 0 0px;		/*上右*/
+				}
+				50%{
+					margin: 0px -20px -20px 0;		/*右下*/
+				}
+				60%{
+					margin: 0 0 -20px -20px;		/*左下*/
+				}
+				/*上面的已经可以了，如果再加流畅的话，再加一遍*/
+				70%{
+					margin: -10px 0 0 -10px;		/*上左*/
+				}
+				80%{
+					margin: -10px -10px 0px 0px;	/*上右*/
+				}
+				90%{
+					margin: 0px -10px -10px 0;		/*右下*/
+				}
+				100%{
+					margin: 0px 0 -10px -10px;		/*左下*/
+				}
+			}
+			/*nav*/
+			nav{
+				height: 60px;
+			}
+			.navLogo{
+				float: left;
+				margin-left: 50px;
+			}
+			.navLogo img{
+				height: 60px;
+			}
+			nav ul{
+				text-align: center;
+			}
+			nav li{
+				display: inline;
+				padding: 0 40px;
+			}
+			nav li a{
+				color: #fff;
+				font: bold 16px/60px "微软雅黑";
+			}
+			nav li a:hover{
+				color: #3fd99e;
+			}
+			
+			/*banner*/
+			#banner{
+				width: 100%;
+				height: 500px;
+				display: table;
+				margin-bottom: 60px;
+				background: url(images/bg1.jpg) no-repeat center;
+			}
+			#banner .center{
+				text-align: center;
+				display: table-cell;
+				vertical-align: middle;
+			}
+			#banner p{
+				font: 26px/45px "微软雅黑";
+				color: #fff;
+			}
+			#banner p:nth-of-type(2){
+				font-size: 20px;
+			}
+			#banner .text{
+				position: relative;
+				display: flex;
+				justify-content: center;
+				justify-content: space-between;
+				margin: 0 auto;
+				opacity: 0;
+				width: 100%;
+			}
+			#banner .text div{
+				font-family: 'LH';
+				font-size: 56px;
+				transition: .1s;
+				/*transform: scaleX(0.5);*/
+			}
+			#banner .text div:nth-child(1){
+				text-align: left;
+				transform-origin: right;
+				
+				/*文字倒序排列*/
+				direction: rtl;
+				unicode-bidi: bidi-override;
+			}
+			#banner .text div:nth-child(2){
+				text-align: right;
+				transform-origin: left;
+			}
+			#banner .text div:first-letter{
+				font-size: 100px;
+			}
+			
+			@font-face {
+				font-family:"LH";
+				src: url('fonts/qtzzgfylhg.eot') format('embedded-opentype'),
+				url('fonts/qtzzgfylhg.woff') format('woff');
+			}
+			.btn a{
+				width: 100px;
+				font: 18px/44px "微软雅黑";
+				color: #fff;
+				display: inline-block;
+				text-align: center;
+				margin: 0 15px;
+				background: #036a2f;
+				
+				animation: 5s colorChange infinite;
+			}
+			
+			/*颜色变化*/
+			@keyframes colorChange{
+				0%{
+					background: #84050e;
+				}
+				50%{
+					background: #036a2f;
+				}
+				100%{
+					background: #b60202;
+				}
+			}
+			
+			@keyframes left{
+				5%{
+					transform: scaleX(0.2);
+				}
+				30%{
+					transform: scaleX(0.8) translateX(-150px);
+				}
+				50%{
+					transform: translateX(0);
+				}
+				70%{
+					transform: translateX(-20px);
+				}
+			}
+			@keyframes right{
+				5%{
+					transform: scaleX(0.2);
+				}
+				30%{
+					transform: scaleX(0.8) translateX(150px);
+				}
+				50%{
+					transform: translateX(0);
+				}
+				70%{
+					transform: translateX(20px);
+				}
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var text=document.querySelector("#banner .text");
+				var child=text.children;
+				
+				text.style.transition='.2s all ease-in';
+				text.style.width='424px';
+				text.style.opacity='1';
+				
+				text.num=0;
+				text.addEventListener('transitionend',function(){
+					text.num++;
+					
+					if(text.num==1){
+						//文字变形
+						child[0].style.animation='1s left';
+						child[1].style.animation='1s right';
+							
+						//震动
+						var html=document.querySelector("html");
+						html.style.animation='.9s shake';
+						
+						//声音
+						var iframe=document.createElement('iframe');
+
+						iframe.allow="autoplay";
+						iframe.style="display:none";
+						iframe.src="video/3660.mp3";
+
+						document.body.appendChild(iframe);
+
+					}
+				});
+			};
+		</script>
+	</head>
+	<body>
+		<nav class="clear">
+			<ul>
+				<li><a href="http://www.apeclass.com/" target="_blank">首页 </a></li>      
+				<li><a href="javascript:;">教学亮点 </a></li>      
+				<li><a href="javascript:;">课程大纲 </a></li>      
+				<li><a href="javascript:;">常见问题 </a></li>
+			</ul>
+		</nav>
+		<section id="banner">
+			<div class="center">
+				<div class="title">
+					<p>就业保障合同签订</p>
+					<div class="text">
+						<div>渡一好</div>
+						<div>渡一好</div>
+					</div>
+					<p>全国知名企业内部直推</p>
+				</div>
+				<div class="btn">
+					<!-- <a href="#">案例</a> -->
+					<a href="#">详情</a>
+				</div>
+			</div>
+		</section>
+		
+		<audio src="video/3660.mp3">你的浏览器不支持audio</audio>
+		<!-- <iframe allow="autoplay" style="display:none" src="video/3660.mp3"></iframe> -->
+
+		<!-- https://blog.csdn.net/wo_shi_ma_nong/article/details/88077869 -->
+	</body>
+</html>
