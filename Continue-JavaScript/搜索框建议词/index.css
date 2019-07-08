@@ -1,0 +1,49 @@
+.container {
+    text-align: center;
+    position: relative;
+}
+
+.container input {
+    width: 400px;
+    height: 35px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.container .list {
+    display: none;
+    margin: 0;
+    padding: 10px 0;
+    list-style: none;
+    border: 1px solid #ccc;
+    width: 400px;
+    position: absolute;
+    background: #fff;
+    text-align: left;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    max-height: 300px;
+    top: 40px;
+    overflow-y: auto;
+}
+
+.container .list li {
+    padding: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    /* 不换行 */
+    white-space: nowrap;
+    overflow-x: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.container .list li .key {
+    color: #f40;
+}
+
+.container .list li.active {
+    background: #ddd;
+}
