@@ -2,216 +2,235 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 40px;
+    }
 
-        .con1 .left,
-        .con1 .right {
-            position: absolute;
-            top: 0;
-            height: 300px;
-            background-color: red;
-            width: 300px;
-        }
+    .con1 .left,
+    .con1 .right {
+      position: absolute;
+      top: 0;
+      height: 300px;
+      background-color: #f40;
+      width: 300px;
+    }
 
-        .con1 .left {
-            left: 0;
-        }
+    .con1 .left {
+      left: 0;
+    }
 
-        .con1 .right {
-            right: 0;
-        }
+    .con1 .right {
+      right: 0;
+    }
 
-        .con1 .middle {
-            height: 300px;
-            background: blue;
-            margin: 0 300px 0;
-        }
-
-
-
-
-        .con2 .left,
-        .con2 .right {
-            width: 300px;
-            height: 300px;
-            background-color: red;
-        }
-
-        .con2 .left {
-            float: left;
-        }
-
-        .con2 .right {
-            float: right;
-        }
-
-        .con2 .middle {
-            height: 300px;
-            margin: 0 300px 0;
-            background-color: blue;
-        }
+    .con1 .middle {
+      height: 400px;
+      background: #ccc;
+      margin: 0 300px 0;
+    }
 
 
 
-        .con3 {
-            display: flex;
 
-        }
+    .con2 .left,
+    .con2 .right {
+      width: 300px;
+      height: 300px;
+      background-color: #f40;
+    }
 
-        .con3 .left,
-        .con3 .right {
-            width: 300px;
-            height: 300px;
-            background-color: red;
-        }
+    .con2 .left {
+      float: left;
+    }
 
-        .con3 .middle {
-            background-color: blue;
-            flex: 1;
-        }
+    .con2 .right {
+      float: right;
+    }
 
-
-
-        .con4{
-            height:300px;
-            padding:0;
-            margin:0;
-        }
-        .con4 div{
-            float:left;
-            position: relative;
-        }
-        .con4{
-            padding:0 300px 0;
-        }
-        .con4 .left,
-        .con4 .right{
-            width:300px;
-            height:300px;
-            background-color:red;
-        }
-        .con4 .left{
-            margin-left:-100%;
-            left:-300px;
-        }
-        .con4 .right{
-            margin-left:-300px;
-            right:-300px;
-        }
-        .con4 .middle{
-            width:100%;
-            height:300px;
-            background-color:blue;
-        }
+    .con2 .middle {
+      height: 300px;
+      margin: 0 300px 0;
+      background-color: #ccc;
+    }
 
 
 
-        .con5{
-            margin:0;
-            padding:0;
-            height:300px;
-        }
-        .con5 .col{
-            height:100%;
-            float:left;
-        }
-        .con5 .middle-wrap{
-            width:100%;
-            height:100%;
-            background-color:blue;
-        }
-        .con5 .middle-inner{
-            margin:0 300px 0;
-            height:100%;
-        }
-        .con5 .left,
-        .con5 .right{
-            width: 300px;
-            height:300px;
-            background-color:red;
-        }
-        .con5 .left{
-            margin-left: -100%;
-        }
-        .con5 .right{
-            margin-left:-300px;
-        }
-    </style> -->
-    <style>
-        /*css代码段如下*/
-        .line-align-center-three {
-            height: 400px;
-            border: 1px solid #e4393c;
-            text-align: center;
-        }
+    .con3 {
+      display: flex;
+    }
 
-        .mark-three {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #ccc;
-            color: #fff;
-        }
-    </style>
+    .con3 .left,
+    .con3 .right {
+      width: 300px;
+      height: 300px;
+      background-color: #f40;
+    }
+
+    .con3 .middle {
+      background-color: #ccc;
+      flex: 1;
+    }
+
+
+
+    .con4 {
+      height: 300px;
+      margin: 0;
+      padding: 0 300px 0;
+    }
+
+    .con4 div {
+      float: left;
+      position: relative;
+    }
+
+    .con4 .left,
+    .con4 .right {
+      width: 300px;
+      height: 300px;
+      background-color: #f40;
+    }
+
+    .con4 .left {
+      margin-left: -100%;
+      left: -300px;
+    }
+
+    .con4 .right {
+      /* margin-left:-100%; */
+      margin-left: -300px;
+      right: -300px;
+    }
+
+    .con4 .middle {
+      width: 100%;
+      height: 300px;
+      background-color: #ccc;
+    }
+
+
+
+    .con5 {
+      margin: 0;
+      padding: 0;
+      height: 300px;
+    }
+
+    .con5 .col {
+      height: 100%;
+      float: left;
+    }
+
+    .con5 .middle-wrap {
+      width: 100%;
+      height: 100%;
+      background-color: #ccc;
+    }
+
+    .con5 .middle-inner {
+      margin: 0 300px 0;
+      height: 100%;
+    }
+
+    .con5 .left,
+    .con5 .right {
+      width: 300px;
+      height: 300px;
+      background-color: #f40;
+    }
+
+    .con5 .left {
+      margin-left: -100%;
+    }
+
+    .con5 .right {
+      margin-left: -300px;
+    }
+
+    .container {
+      float: left;
+      width: 100%;
+    }
+
+    .container .middle {
+      height: 300px;
+      margin-left: 300px;
+      margin-right: 300px;
+      background-color: #ccc;
+    }
+
+    .left {
+      float: left;
+      height: 300px;
+      width: 300px;
+      margin-left: -100%;
+      background-color: #f40;
+    }
+
+    .right {
+      float: right;
+      height: 300px;
+      width: 300px;
+      margin-left: -300px;
+      background-color: #f40;
+    }
+  </style>
 </head>
 
 
 <body>
-
-        <!-- <-- html代码段如下--> -->
-        <div class="line-align-center-three">
-           <span class="mark-three">
-              这里是一个行内元素
-           </span>
-        </div>
-       
-    <!-- 左右栏定宽   中间宽度自适应 -->
-    <!-- 1,绝对定位 + margin -->
-    <!-- <div class="con1">
+  <!-- 左右栏定宽   中间宽度自适应 -->
+  <!-- 1,绝对定位 + margin -->
+  <!-- <div class="con1">
         <div class="left">left</div>
         <div class="middle">middle</div>
         <div class="right">right</div>
     </div> -->
 
-    <!-- 2,float +  margin -->
-    <!-- <div class="con2">
+  <!-- 2,float +  margin -->
+  <!-- <div class="con2">
         <div class="left">left</div>
         <div class="right">right</div>
         <div class="middle">middle</div>
     </div> -->
 
-    <!--3, flex 布局 -->
-    <!-- <div class="con3">
-        <div class="left"></div>
-        <div class="middle"></div>
-        <div class="right"></div>
+  <!--3, flex 布局 -->
+  <!-- <div class="con3">
+        <div class="left">这是左边的内容</div>
+        <div class="middle">这是中间的内容</div>
+        <div class="right">这是右边的内容</div>
     </div> -->
 
-    <!-- 4,圣杯布局  利用到float 负边距  position:relative -->
-    <div class="con4">
-        <div class="middle"></div>
-        <div class="left"></div>
-        <div class="right"></div>
+  <!-- 4,圣杯布局  利用到float 负边距  position:relative -->
+  <div class="con4">
+        <div class="middle">这是中间的内容</div>
+        <div class="left">这是左边的内容</div>
+        <div class="right">这是右边的内容</div>
     </div>
 
 
 
-    <!-- 5，双飞翼布局 -->
-    <!-- <div class="con5">
+  <!-- 5，双飞翼布局 -->
+  <!-- <div class="con5">
         <div class="middle-wrap col">
             <div class="middle-inner">middle</div>
         </div>
         <div class="left col">left</div>
         <div class="right col">right</div>
     </div> -->
+  <!-- <div class="container">
+    <div class="middle">这是中间的内容</div>
+  </div>
+  <div class="left">这是左边的内容</div>
+  <div class="right">这是右边的内容</div> -->
 
 </body>
 

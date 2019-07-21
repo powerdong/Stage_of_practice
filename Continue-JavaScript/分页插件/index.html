@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .pager{
+      text-align: center;
+    }
+
+    .pager .page-item{
+      display: inline-block;
+      padding: 5px 7px;
+      border: 1px solid #000; 
+      margin: 8px;
+      color: aqua;
+      cursor: pointer;
+    }
+
+    .pager .page-item.disabled{
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .pager .page-item.active{
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pager"></div>
+
+  <script src="./index.js"></script>
+  <script>
+    var pager = new Pager();
+    
+  </script>
+</body>
+
+</html>
