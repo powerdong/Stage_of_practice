@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box"></div>
+  <script>
+    let oBox = document.getElementById('box');
+    oBox.onmouseenter = function (e) {
+      let inDir =  new GetDir(e, oBox, "in");
+    }
+    oBox.onmouseleave = function (e) {
+      let outDir =  new GetDir(e, oBox, "out");
+    }
+
+    function GetDir(e, dom, dir) {
+      const d = this.gerDer(e, dom);
+      let res = '';
+      switch (d) {
+        case 0:
+          res = "-top"
+          break;
+        case 1:
+          res = "-right"
+          break;
+        case 2:
+          res = "-bottom"
+          break;
+        case 3:
+          res = "-left"
+          break;
+      }
+      res = dir + res;
+      console.log(res);
+    }
+
+    GetDir.prototype.gerDer = function (event, dom) {
+      let d;
+      const w = dom.offsetWidth;
+      const h = dom.offsetHeight;
+      const l = dom.offsetLeft;
+      const t = dom.offsetTop;
+      const x = (event.clientX - l - w / 2) * (w > h ? h / w : 1);
+      const y = (event.clientY - t - h / 2) * (h > w ? w / h : 1);
+      d = (Math.round(((Math.atan2(y, x) * (180 / Math.PI) + 180) / 90) + 3) % 4);
+      return d;
+    }
+  </script>
+</body>
+
+</html>

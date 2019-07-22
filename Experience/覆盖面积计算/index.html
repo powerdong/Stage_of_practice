@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box1 {
+      width: 100px;
+      height: 100px;
+      background-color: aqua;
+      position: absolute;
+      z-index: 1;
+    }
+
+    #box2 {
+      width: 100px;
+      height: 100px;
+      background-color: black;
+      position: absolute;
+      left: 500px;
+      top: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box1"></div>
+  <div id="box2"></div>
+  <script>
+    var oBox1 = document.getElementById('box1');
+    var oBox2 = document.getElementById('box2');
+    var coverArea =  new BindEvent(oBox1, oBox2);
+
+    function BindEvent(moveDom, fixedDom) {
+      let fixedDomLeft = fixedDom.offsetLeft;
+      let fixedDomTop = fixedDom.offsetTop;
+      let fixedDomHeight = fixedDom.offsetHeight;
+      let fixedDomWidth = fixedDom.offsetWidth;
+      let fixedDomBottom = fixedDomTop + fixedDomHeight;
+      let moveDomWidth = moveDom.offsetWidth;
+      let moveDomHeight = moveDom.offsetHeight;
+      let drag = false;
+      let disWidth,disHeight;
+      moveDom.onmousedown = function (e) {
+        drag = true;
+        let event = e || window.event;
+        let mouseDownX = event.clientX;
+        let mouseDownY = event.clientY;
+        let moveDomLeft = moveDom.offsetLeft;
+        let moveDomTop = moveDom.offsetTop;
+        disWidth = mouseDownX - moveDomLeft;
+        disHeight = mouseDownY - moveDomTop;
+      }
+      document.documentElement.onmousemove = function (e) {
+        let event = e || window.event;
+        if (drag) {
+          moveDom.style.left = event.clientX - disWidth + 'px';
+          moveDom.style.top = event.clientY - disHeight + 'px';
+          let moveDomLeft = moveDom.offsetLeft;
+          let moveDomTop = moveDom.offsetTop;
+          let coverHeight = 0;
+          let coverWidth = 0;
+          let moveDomRight = moveDomLeft + moveDomWidth;
+          let fixedDomRight = fixedDomLeft + fixedDomWidth;
+          let moveDomBottom = moveDomTop + moveDomHeight;
+
+          if (moveDomRight >= fixedDomLeft &&
+            moveDomLeft <= fixedDomLeft) {
+            coverWidth = moveDomRight - fixedDomLeft;
+          } else if (fixedDomRight >= moveDomLeft &&
+            moveDomRight >= fixedDomRight) {
+            coverWidth = fixedDomRight - moveDomLeft;
+          }
+          if (moveDomBottom >= fixedDomTop && moveDomTop <= fixedDomTop) {
+            coverHeight = moveDomBottom- fixedDomTop;
+          } else if (fixedDomBottom >= moveDomTop && moveDomBottom >= fixedDomBottom) {
+            coverHeight = fixedDomBottom - moveDomTop;
+          }
+          console.log(coverWidth * coverHeight);
+
+        }
+      }
+      moveDom.onmouseup = function () {
+        drag = false;
+      }
+    }
+  </script>
+</body>
+
+</html>
