@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .item {
+      width: 100px;
+      height: 100px;
+      background-color: #f40;
+      margin: 100px auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="item"></div>
+
+  <script>
+    var box = document.getElementsByClassName('item')[0]
+    document.documentElement.onmousemove = function (e) {
+      move(e, box, 200);
+    }
+
+    function move(event, dom, area) {
+      var x = parseInt(dom.offsetLeft + dom.offsetWidth / 2);
+      var y = parseInt(dom.offsetTop + dom.offsetHeight / 2);
+      var a = Math.abs(event.clientX - x);
+      var b = Math.abs(event.clientY - y);
+      var c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+
+      if (c < area) {
+        return c;
+      }
+    }
+  </script>
+</body>
+
+</html>
