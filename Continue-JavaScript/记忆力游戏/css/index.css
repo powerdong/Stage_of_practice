@@ -1,0 +1,63 @@
+
+.title {
+    text-align: center;
+}
+
+.container {
+    width: 480px;
+    height: 480px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.list li {
+    width: 80px;
+    height: 80px;
+    float: left;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.list li img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform: rotateY(180deg);
+    /* 元素背面是否可见 */
+    backface-visibility: hidden;
+    /* 所有可以应用动画的css属性，在0.5秒内完成变化 */
+    transition: .5s;
+}
+
+.list li.front img {
+    transform: rotateY(0deg);
+}
+
+.list li::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #008c8c;
+    transition: .5s;
+}
+
+.list li.front::before {
+    transform: rotateY(180deg);
+}
+
+.list li.clear img{
+    display: none;
+}
+
+.list li.clear::before{
+    display: none;
+}
