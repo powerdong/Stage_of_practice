@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		#box{
+			position: relative;
+
+			width: 1018px;
+			height: 916px;
+			border: 1px solid #000;
+
+			/* display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-content: space-between; */
+		}
+
+		#box div{
+			width: 100px;
+			height: 100px;
+			background: grey;
+
+			position: absolute;
+
+			/* float: left; */
+
+			opacity: 0.2;
+			transition: 0.5s;
+		}
+	</style>
+</head>
+
+<body>
+</body>
+	<div id="box">
+	</div>
+
+	<script>
+		var box=document.getElementById('box');
+		var divs=box.getElementsByTagName('div');		//????
+		var pos=[];	//用来存储所有方块的位置信息
+
+		var row=9;		//9行
+		var col=10;		//10列
+
+		var str='';		//用来存储所有的div
+
+		for(var i=0;i<divs.length;i++){
+			pos.push([divs[i].offsetLeft,divs[i].offsetTop]);
+		}
+
+		//console.log(pos);
+		for(var i=0;i<pos.length;i++){
+			divs[i].style.position='absolute';
+			divs[i].style.left=pos[i][0]+'px';
+			divs[i].style.top=pos[i][1]+'px';
+		}
+
+
+		/*
+			1、用一个for循环实现横着排与竖着排
+			1、横着排
+				每一行的top都是一样，每一列的left都是一样的
+
+				top值       top=parseInt(当前的值/列数)
+					第一行
+					当前索引		0 1 2 3 4 5 6 7 8 9
+					要变成的索引	0 0 0 0 0 0 0 0 0 0
+
+					第二行
+					当前索引		10 11 12 13 14 15 16 17 18 19
+					要变成的索引	1  1  1  1  1  1  1  1  1   1
+
+				left      left=当前的值%列数
+					第一行
+					当前索引		0 1 2 3 4 5 6 7 8 9
+					要变成的索引	0 1 2 3 4 5 6 7 8 9
+
+					第二行
+					当前索引		10 11 12 13 14 15 16 17 18 19
+					要变成的索引	0  1  2  3  4  5  6  7  8  9
+
+			2、竖着排
+				top       top=i%行数
+					第一行
+					当前索引		0 9 18 27 36 45 54 63 72 81
+					要变成的索引	0 0 0  0  0  0  0  0  0  0
+
+					第二行
+					当前索引		1 10 19 28 37 46 55 64 73 82
+					要变成的索引	1 1  1  1  1  1  1  1  1  1
+
+				left    left:parseInt(i/行数)
+					第一行
+					当前索引		0 9 18 27 36 45 54 63 72 81
+					要变成的索引	0 1 2  3  4  5  6  7  8  9
+
+					第二行
+					当前索引		1 10 19 28 37 46 55 64 73 82
+					要变成的索引	0 1  2  3  4  5  6  7  8  9 
+
+
+
+			2、使用两个for循环实现横着排，竖着排
+				1、横着排
+					外层的循(i)环代表行，里层的循环(j)代表的是列
+					每一行的i的值都一样	top=i*一个方块的高度
+					每一列的j的值都一样	left=j*一个方块的宽度
+
+				2、竖着排
+					外层的循环（i）代表列，里层的循环(j)代表的是行
+					每一列的i的值都一样，left=i*一个方块的宽度
+					每一行的j的值都一样，top=j*一个方块的高度
+
+		 */
+		
+
+		 /* for(var i=0;i<row*col;i++){
+			//
+			var t=parseInt(i/col);
+			var l=i%col;
+
+
+			var t=i%row;
+			var l=parseInt(i/row);
+			
+			str+='<div style="left:'+l*(100+2)+'px;top:'+t*(100+2)+'px;background:url(images1/pic.jpg) no-repeat -'+l*100+'px -'+t*100+'px;"></div>';
+		 } */
+
+
+		 //横着排 
+		/* for(var i=0;i<row;i++){
+			for(var j=0;j<col;j++){
+				str+='<div style="left:'+j*(100+2)+'px;top:'+i*(100+2)+'px;background:url(images1/pic.jpg) no-repeat -'+j*100+'px -'+i*100+'px;"></div>';
+			}
+		} */
+
+		//竖着排
+		for(var i=0;i<col;i++){
+			for(var j=0;j<row;j++){
+				str+='<div style="left:'+i*(100+2)+'px;top:'+j*(100+2)+'px;background:url(images1/pic.jpg) no-repeat -'+i*100+'px -'+j*100+'px;"></div>';
+			}
+		}
+
+
+		 box.innerHTML=str;
+
+
+		//鼠标移入效果
+		for(var i=0;i<divs.length;i++){
+			divs[i].onmouseover=function(){
+				this.style.opacity=1;
+				this.style.transform='scale(1.5)';
+				this.style.zIndex=2;
+			};
+
+			divs[i].onmouseout=function(){
+				this.style.opacity=1;
+				this.style.transform='scale(1)';
+				this.style.zIndex=1;
+			}
+		}
+	</script>
+</html>
