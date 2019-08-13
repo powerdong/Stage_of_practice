@@ -1,0 +1,49 @@
+.game {
+    width: 640px;
+    height: 744px;
+    border: 2px solid;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.bg {
+    background: url("./images/bg.png") no-repeat left top/100% 100%;
+    width: 640px;
+    height: 550px;
+}
+
+.land {
+    background: url("./images/land.png") repeat-x;
+    width: 300%;
+    height: 194px;
+}
+
+.tudou {
+    width: 84px;
+    height: 84px;
+    background: url("./images/tudou.png") no-repeat;
+    position: absolute;
+    left: 200px;
+    bottom: 194px;
+}
+
+.bar{
+    width: 448px;
+    height: 30px;
+    border: 2px solid #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 20px;
+    background: rgb(165, 101, 42);
+    /* 圆角边框 */
+    border-radius: 5px;
+}
+
+.bar-content{
+    height: 100%;
+    width: 0;
+    background: yellow;
+}
