@@ -1,0 +1,41 @@
+.container {
+    width: 720px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.container .left {
+    width: 500px;
+    height: 500px;
+    float: left;
+    background: url("./images/monica.webp") no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.container .right {
+    width: 150px;
+    height: 150px;
+    background: url("./images/monica.webp") no-repeat;
+    float: right;
+}
+
+.container .cut {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 150px;
+    top: 150px;
+    border: 2px solid #fff;
+    cursor: move;
+}
+
+.container .resize {
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    position: absolute;
+    right: -8px;
+    bottom: -8px;
+    cursor: nw-resize;
+}
