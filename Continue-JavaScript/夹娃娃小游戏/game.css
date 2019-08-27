@@ -1,0 +1,70 @@
+.game {
+    width: 750px;
+    height: 1109px;
+    background: url("./img/bg.png");
+    margin: 0 auto;
+    position: relative;
+}
+
+.game .button {
+    width: 200px;
+    height: 150px;
+    background: url("./img/start.png") no-repeat;
+    cursor: pointer;
+    position: absolute;
+    bottom: 200px;
+    right: 114px;
+}
+
+.game .button.down {
+    background-position: 0px -150px;
+}
+
+.game .claw {
+    position: absolute;
+    background:url("./img/hand.png") no-repeat;
+    width: 150px;
+    height: 80px;
+    left: 280px;
+    top: 235px;
+    background-position: 12px bottom;
+    z-index: 1;
+    transition: height 1s linear;
+}
+
+.game .claw.open{
+    background-position: -148px bottom;
+}
+
+.game .claw::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 15px;
+    background: url("./img/rod.png") repeat-y center top;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    margin: auto;
+}
+
+.toys{
+    width: 470px;
+    margin-left: 120px;
+    padding-top: 540px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 娃娃的div */
+.toys div{
+    position: absolute;
+    bottom: 0;
+    background: url("./img/toy.png") no-repeat;
+    width: 200px;
+    height: 200px;
+    left: 0;
+    transition: bottom 1s linear;
+}

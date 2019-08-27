@@ -1,0 +1,88 @@
+body{
+    background: #000;
+}
+
+#clock{
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.mark div{
+    background: #fff;
+    width: 6px;
+    height: 2px;
+    box-shadow: 0 0 10px #ffeab0;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    transform-origin: 250px 0;
+}
+
+.mark div.bold{
+    width: 8px;
+    height: 4px;
+}
+
+.number{
+    position: absolute;
+    left: 250px;
+    top: 250px;
+}
+
+.number div{
+    color: #fff;
+    text-shadow: 0 0 10px #ffeab0;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+
+.pointer{
+    position: absolute;
+    left: 250px;
+    top: 250px;
+}
+
+.pointer div{
+    background: #fff;
+    box-shadow: 2px 2px 5px #ffeab0;
+    position: absolute;
+}
+
+.pointer .h{
+    width: 140px;
+    height: 6px;
+    left: -40px;
+    transform-origin: 40px center;
+}
+
+.pointer .m{
+    width: 190px;
+    height: 4px;
+    left: -50px;
+    transform-origin: 50px center;
+}
+
+
+.pointer .s{
+    width: 250px;
+    height: 2px;
+    left: -60px;
+    transform-origin: 60px center;
+}
+
+.dot{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 245px;
+    top: 245px;
+    background: #f40;
+    border-radius: 50%; 
+}
