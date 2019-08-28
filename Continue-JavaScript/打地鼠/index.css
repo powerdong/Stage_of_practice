@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.mouses {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.toolbar {
+  height: 60px;
+  line-height: 60px;
+  color: #fff;
+  background-color: #7cd3b1;
+  border: 2px solid #60a58a;
+  border-top: none;
+}
+
+.tLeft {
+  float: left;
+  margin-left: 40px;
+}
+
+.tRight {
+  float: right;
+  margin-right: 40px;
+}
+
+.mouse{
+  width: 20%;
+  float: left;
+}
+
+.start{
+  clear: both;
+  text-align: center;
+  cursor: pointer;
+}
