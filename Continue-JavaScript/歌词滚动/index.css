@@ -1,0 +1,43 @@
+body{
+    background: #000;
+}
+
+.container{
+    width: 500px;
+    margin: 0 auto;
+}
+
+.container audio{
+    display: block;
+    width: 100%;
+}
+
+.container audio:focus{
+    outline: none;
+}
+
+.lrc{
+    height: 450px;
+    margin-top: 30px;
+    color: #888;
+    overflow: hidden;
+}
+
+.lrc ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    /* ul元素的margin-top值变化，在0.7秒内完成 */
+    transition: margin-top 0.7s;
+}
+
+.lrc ul li{
+    height: 35px;
+    line-height: 35px;
+}
+
+/* 高亮的歌词效果 */
+.lrc ul li.active{
+    color: #fff;
+}
