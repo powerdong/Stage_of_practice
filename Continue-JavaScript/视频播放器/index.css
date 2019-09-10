@@ -1,4 +1,4 @@
-@import "//at.alicdn.com/t/font_1228248_krvwaz0pw3g.css";
+@import "http://at.alicdn.com/t/font_1228248_ttomu97q98.css";
 
 .container{
     width: 600px;
@@ -136,7 +136,6 @@
 
 .progress-bar .bg{
     background-color: skyblue;
-    width: ;
     position: absolute;
     left: 0;
     top: 0;
