@@ -117,6 +117,7 @@ function setCurrentTime(e) {
     //  鼠标点击位置距离页面左边的距离
     var offsetX = e.pageX - divModal.getBoundingClientRect().left;
     video.currentTime = offsetX / divModal.clientWidth * total;
+    setProgress();
 }
 
 /**
