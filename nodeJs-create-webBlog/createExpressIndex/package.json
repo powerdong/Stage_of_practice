@@ -1,0 +1,25 @@
+{
+  "name": "createexpressindex",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "cross-env NODE_ENV=dev nodemon ./bin/www",
+    "prd": "cross-env NODE_ENV=production nodemon ./bin/www"
+  },
+  "dependencies": {
+    "connect-redis": "^4.0.3",
+    "cookie-parser": "~1.4.4",
+    "cross-env": "^6.0.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.0",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.4",
+    "pug": "2.0.0-beta11",
+    "redis": "^2.8.0",
+    "xss": "^1.0.6"
+  }
+}
